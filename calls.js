@@ -11,7 +11,7 @@ var options = {
   'maxRedirects': 20
 };
 
-const  = https.request(options, function (res) {
+const loginCall = https.request(options, function (res) {
   var chunks = [];
 
   res.on("data", function (chunk) {
@@ -28,5 +28,6 @@ const  = https.request(options, function (res) {
   });
 });
 
-req.end();
+loginCall.end();
 
+exports.loginCall = loginCall;
