@@ -1,0 +1,24 @@
+{
+  "name": "full-stack-trc",
+  "version": "1.0.0",
+  "description": "# Tyler, Rashad, and Christian",
+  "main": "api-routes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tylerrutt17/Full-Stack-Starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tylerrutt17/Full-Stack-Starter/issues"
+  },
+  "homepage": "https://github.com/Tylerrutt17/Full-Stack-Starter#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}

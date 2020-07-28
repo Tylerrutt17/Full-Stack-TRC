@@ -1,0 +1,503 @@
+* {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    font-family: 'Merriweather';
+}
+
+.nav {
+    height: 8vh;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100000;
+    background-color: rgb(255, 255, 255);
+}
+
+.nav>.navitems {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-top: 10px;
+    margin: 10px 0;
+}
+
+.navitems>h2 {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-family: 'Work Sans';
+}
+
+.navitems>h2>span {
+    color: rgb(255, 187, 0);
+    font-family: 'Work Sans';
+}
+
+.navitems>ul {
+    list-style: none;
+    display: flex;
+
+}
+
+.navitems>ul>a {
+    margin: 0px 40px;
+    font-size: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    font-family: 'Work Sans';
+}
+
+.navitems>ul>a:hover {
+    color: rgb(255, 187, 0)
+}
+
+.navitems>.login {
+    height: 45px;
+    width: 200px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border: rgb(0, 0, 0) 3px solid;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: .2s;
+    font-family: 'Work Sans';
+}
+
+.login:hover {
+    background-color: rgb(255, 187, 0);
+    cursor: pointer;
+    border: none;
+}
+
+.login>a {
+    color: black;
+    text-decoration: none;
+}
+
+.main {
+    height: 400vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+}
+
+.main>.greyblock {
+    height: 40%;
+    width: 51.4%;
+    background-color: grey;
+    position: absolute;
+    left: 0;
+}
+
+.greyblock>.whiteblock {
+    height: 300px;
+    width: 105px;
+    background-color: rgb(255, 187, 0);
+    position: relative;
+    left: 140px;
+    top: 20px;
+}
+
+
+
+.main>.anotherblock {
+    background-color: rgb(255, 255, 255);
+    height: 50%;
+    width: 47.5%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+
+.anotherblock>.topyellow {
+    height: 100px;
+    width: 100%;
+    background-color: rgb(255, 187, 0);
+}
+
+.anotherblock>.page1 {
+    font-family: 'Work Sans';
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    font-weight: 200;
+    color: rgb(122, 122, 122);
+    font-size: 40px;
+}
+
+.anotherblock>img {
+    height: 700px;
+    width: 570px;
+    position: absolute;
+    bottom: 45%;
+    left: 20%;
+}
+
+.anotherblock>.randomtext {
+    position: absolute;
+    top: 60%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.anotherblock>.yellow {
+    background-color: rgb(255, 187, 0);
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    bottom: 30%;
+}
+
+.anotherblock>.year {
+    color: rgb(202, 202, 202);
+    font-size: 80px;
+    position: absolute;
+    bottom: 20%;
+    font-weight: 200;
+    font-family: 'Work Sans';
+}
+
+.main>.herotext {
+    position: absolute;
+    z-index: 100;
+    top: 10%;
+    height: 8%;
+    width: 100%;
+    text-align: center;
+}
+
+.herotext>.title {
+    font-size: 80px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Work Sans';
+}
+
+.title>span {
+    color: rgb(255, 187, 0);
+    font-family: 'Work Sans';
+}
+
+.herotext>p {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: .2px;
+    color: rgb(255, 187, 0);
+    font-weight: bold;
+}
+
+.herotext>p>span {
+    color: rgb(255, 255, 255)
+}
+
+@keyframes goDown {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        bottom: 0%;
+    }
+}
+
+.herotext>i {
+    transform: rotate(90deg);
+    font-size: 40px;
+    animation-name: goDown;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: normal forwards;
+    position: absolute;
+    bottom: 15%;
+}
+
+.main>.foodpic {
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    background-color: grey;
+}
+
+.foodpic {
+    mix-blend-mode: darken;
+}
+
+.content1 {
+    height: 60%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+
+
+.content1>.page2 {
+    font-family: 'Work Sans';
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    font-weight: 200;
+    color: rgb(122, 122, 122);
+    font-size: 40px;
+}
+
+.content1>.dish1 {
+    height: 400px;
+    width: 620px;
+    position: absolute;
+    left: 5%;
+    top: 15%;
+    z-index: 10;
+}
+
+.dish1>h1 {
+    color: black;
+    font-size: 50px;
+}
+
+.dish1>p {
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.dish1>h1>span {
+    color: rgb(255, 187, 0);
+}
+
+.content1>.block2 {
+    background-color: grey;
+    height: 50%;
+    width: 48.5%;
+    position: absolute;
+    right: 0;
+}
+
+.block2>.recipebox1 {
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    width: 55%;
+    height: 30%;
+    color: white;
+}
+
+.recipebox1>h2 {
+    font-size: 40px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: rgb(255, 187, 0);
+    margin-bottom: 10px;
+}
+
+.recipebox1>h3 {
+    font-size: 20px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.recipebox1>p {}
+
+.recipebox1>.recipe1 {
+    background-color: rgb(255, 187, 0);
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 50px;
+    width: 140px;
+    position: absolute;
+    bottom: 20%;
+}
+
+.block2>img {
+    height: 70%;
+    position: absolute;
+    left: -30%;
+    top: 10%;
+}
+
+.content1>.yellow2 {
+    height: 1000px;
+    width: 400px;
+    background-color: rgb(255, 187, 0);
+    position: absolute;
+    bottom: 30%;
+}
+
+.randomdish {
+    background-color: rgb(255, 255, 255);
+    height: 22%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.randomdish>.page3 {
+    font-family: 'Work Sans';
+    position: absolute;
+    right: 2%;
+    top: 30%;
+    font-weight: 200;
+    color: rgb(122, 122, 122);
+    font-size: 40px;
+}
+
+.randomdish>.randomtitle {
+    color: rgb(173, 173, 173);
+    font-size: 200px;
+    text-align: center;
+    z-index: 10;
+    position: absolute;
+    text-transform: uppercase;
+    line-height: 550px;
+}
+
+.randomdish>.row {
+    background-color: transparent;
+    height: 70%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    margin-top: 30px;
+}
+
+.randomdish>.randomblock {
+    background-color: rgb(214, 214, 214);
+    height: 200px;
+    width: 1200px;
+    position: absolute;
+    right: 0;
+    top: -25%;
+}
+
+.row>div {
+    position: relative;
+    margin: auto;
+    height: 70%;
+    width: 30%;
+    text-align: center;
+}
+
+.row>div>h1 {
+    margin-top: 10px;
+}
+
+.row>div>.randomize {
+    position: absolute;
+    left: 25%;
+    bottom: 20%;
+    height: 50px;
+    width: 300px;
+    background-color: rgb(255, 187, 0);
+    font-weight: bold;
+    font-size: 17px;
+    border: none;
+    font-family: 'Work Sans';
+}
+
+.secondcontainer {
+    height: 100vh;
+    width: 100%;
+    border-top: grey 1px solid;
+    border-bottom: grey 1px solid;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow-x: scroll;
+}
+
+.secondcontainer::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 187, 0);
+
+}
+
+.secondcontainer::-webkit-scrollbar {
+    background-color: rgb(255, 255, 255);
+
+}
+
+.secondcontainer>.page4 {
+    font-family: 'Work Sans';
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    font-weight: 200;
+    color: rgb(122, 122, 122);
+    font-size: 40px;
+}
+
+.secondcontainer>img {
+    height: 700px;
+    width: 500px;
+    position: absolute;
+    top: 20%;
+}
+
+
+@keyframes go {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        right: 10%;
+    }
+}
+
+.secondcontainer>i {
+    font-size: 40px;
+    position: absolute;
+    right: 30%;
+    top: 50%;
+    animation-name: go;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: normal forwards;
+}
+
+.secondcontainer>.milkshake1 {
+    position: absolute;
+    left: 5%;
+    top: 30%;
+    width: 30%;
+    height: 50%;
+}
+
+.milkshake1>h1 {
+    font-size: 50px;
+}
+
+.milkshake1>p {
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.milkshake1>h3 {
+    line-height: 35px;
+}
+
+.milkshake1>.shake {
+    background-color: grey;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 20%;
+    height: 50px;
+    width: 300px;
+    border: none;
+}
