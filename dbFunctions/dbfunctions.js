@@ -30,7 +30,6 @@ const loadUser = async (db, username) => {
 }
 
 const attemptLogin = async (db, username, password)=> {
-    // Process of initializing a new user
     db.one(`SELECT * FROM users WHERE username='${username}'`)
     .then((user)=> {
         console.log(user.favorite_foods)
@@ -44,8 +43,7 @@ const attemptLogin = async (db, username, password)=> {
               console.log("Wrong Passcode")
               return false
             }
-        })
-      
+        }) 
     })
     .catch(err=> {
         console.log("Error finding user with that username "+err)
