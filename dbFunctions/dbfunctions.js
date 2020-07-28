@@ -1,9 +1,5 @@
 const bcrypt = require('bcrypt')
-
 const pgp = require('pg-promise')()
-
-// Link to the database
-const db = pgp('postgres://dghqeslf:mNRbeXOviur1ep7cTdIZ2Gt0lzDs2UNi@ruby.db.elephantsql.com:5432/dghqeslf')
 
 const uploadNewUser = async (db, name, username, favorite_foods, zipcode, rawpassword, callback)=>{
     // Hashes the raw password using bcrypt.
