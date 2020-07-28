@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt')
 const pgp = require('pg-promise')()
 
+
+
 const uploadNewUser = async (db, name, username, favorite_foods, zipcode, rawpassword, callback)=>{
     // Hashes the raw password using bcrypt.
     const hashedPassword = await bcrypt.hash(rawpassword, 10)
@@ -14,7 +16,13 @@ const uploadNewUser = async (db, name, username, favorite_foods, zipcode, rawpas
     .catch(() => console.log("Error Uploading User To DB. :("))
 }
 
-// On login, load users information
+const callback = () => {
+    console.log("cool")
+}
+
+//uploadNewUser(db, 'test name', 'testuser1', 'grass, flowers', '30243', '123456', callback)
+
+// Based on a users username you can load that specific users information
 const loadUser = async (db, username) => {
     db.one(`SELECT * FROM users WHERE username = '${username}'`)
     .then(user =>{
@@ -24,6 +32,33 @@ const loadUser = async (db, username) => {
     .catch(err=>console.log("Error finding that user...", err))
 }
 
+
+
+const attemptLogin = async (db, username, password)=> {
+    // Process of initializing a new user
+    db.one(`SELECT * FROM users WHERE username='${username}'`)
+    .then((user)=> {
+        console.log(user.favorite_foods)
+        // compares the users entered password to the password to the user in the database if a user with that username exists
+        bcrypt.compare(password, user.password,(err,isMatch)=>{
+          if(err)throw err;
+            if (isMatch === true) {
+              console.log("Correct PASSWORD! "+ user.name)
+              return true
+            } else {
+              console.log("Wrong Passcode")
+              return false
+            }
+        })
+      
+    })
+    .catch(err=> {
+        console.log("Error finding user with that username "+err)
+    })
+}
+
+//attemptLogin(db, 'testuser', '123456')
+
 module.exports = {
-    uploadNewUser, loadUser
+    uploadNewUser, loadUser, attemptLogin
 }
