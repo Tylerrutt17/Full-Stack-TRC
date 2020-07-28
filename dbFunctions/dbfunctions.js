@@ -1,8 +1,6 @@
 const bcrypt = require('bcrypt')
 const pgp = require('pg-promise')()
 
-
-
 const uploadNewUser = async (db, name, username, favorite_foods, zipcode, rawpassword, callback)=>{
     // Hashes the raw password using bcrypt.
     const hashedPassword = await bcrypt.hash(rawpassword, 10)
@@ -19,7 +17,6 @@ const uploadNewUser = async (db, name, username, favorite_foods, zipcode, rawpas
 const callback = () => {
     console.log("cool")
 }
-
 //uploadNewUser(db, 'test name', 'testuser1', 'grass, flowers', '30243', '123456', callback)
 
 // Based on a users username you can load that specific users information
@@ -31,8 +28,6 @@ const loadUser = async (db, username) => {
     })
     .catch(err=>console.log("Error finding that user...", err))
 }
-
-
 
 const attemptLogin = async (db, username, password)=> {
     // Process of initializing a new user
