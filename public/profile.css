@@ -1,0 +1,240 @@
+* {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: "Work Sans";
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(207, 207, 207);
+}
+
+.main {
+  height: 90vh;
+  width: 90%;
+  background-color: white;
+  position: relative;
+  top: 30px;
+  box-shadow: grey 5px 5px 15px;
+}
+
+.yellowblock {
+  background-color: rgba(255, 187, 0, 1);
+  position: absolute;
+  left: 0;
+  height: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.yellowblock > h1 {
+  font-weight: bold;
+  position: absolute;
+  top: 20%;
+  text-transform: uppercase;
+}
+
+.yellowblock > .profilepic {
+  height: 200px;
+  width: 200px;
+  background-color: rgb(235, 235, 235);
+  border: 1px solid white;
+  position: absolute;
+  bottom: -40%;
+}
+
+.profilepic > img {
+  height: 200px;
+  width: 200px;
+}
+
+.left {
+  border-right: grey 1px solid;
+  position: absolute;
+  height: 100%;
+  width: 25%;
+}
+
+.left > .personal {
+  text-align: center;
+  height: 55%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.personal > i {
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: rgb(161, 161, 161);
+}
+
+.personal > h3 {
+  margin-bottom: 20px;
+}
+
+.personal > ul {
+  display: block;
+  list-style: none;
+  width: 50%;
+  position: absolute;
+  left: 5%;
+  text-align: left;
+}
+
+.personal > ul > a {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.personal > ul > a > li {
+  margin: 20px 0;
+  text-decoration: none;
+  color: black;
+}
+
+.personal > .follow {
+  position: absolute;
+  bottom: 17%;
+  left: 27%;
+  background-color: rgba(255, 187, 0, 1);
+  border: none;
+  height: 40px;
+  width: 200px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: rgb(161, 161, 161) 0px 7px 5px;
+}
+
+.right {
+  position: absolute;
+  height: 100%;
+  width: 75%;
+  position: absolute;
+  right: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-left: grey 1px solid;
+}
+
+.right::-webkit-scrollbar {
+  background-color: rgb(20, 20, 20);
+  width: 10px;
+}
+
+.right::-webkit-scrollbar-thumb {
+  background: rgb(212, 180, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 187, 0, 1) 7%,
+    rgba(244, 221, 6, 1) 47%
+  );
+}
+
+.right > .nav {
+  height: 10vh;
+  width: 100%;
+}
+
+.right > .nav > .navitems {
+  background-color: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  border-left: grey 1px solid;
+}
+
+.navitems > h3 {
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  margin: auto 0;
+  text-transform: uppercase;
+}
+
+.navitems > h3 > span {
+  color: rgb(255, 187, 0);
+}
+
+.navitems > ul {
+  display: flex;
+  list-style: none;
+}
+
+.navitems > ul > a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  margin: auto 30px;
+  font-weight: 300;
+  font-size: 19px;
+  text-transform: uppercase;
+}
+
+.navitems > .logout {
+  background-color: white;
+  border: black 2px solid;
+  height: 40px;
+  width: 200px;
+  font-weight: bold;
+  font-size: 17px;
+  margin: auto 0;
+  text-transform: uppercase;
+}
+
+.right > .intro {
+  height: 20vh;
+  width: 100%;
+  position: absolute;
+  top: 20%;
+}
+.intro > h1 {
+  font-size: 100px;
+  font-family: "Merriweather";
+  text-align: left;
+  margin: 0 20px;
+}
+
+.intro > h2 {
+  font-family: "Merriweather";
+  font-size: 30px;
+  text-align: center;
+}
+
+.eats {
+  height: 43vh;
+  width: 100%;
+  position: absolute;
+  top: 47%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.eats > .place {
+  height: 100%;
+  width: 30%;
+  text-align: center;
+  line-height: 30px;
+  box-shadow: rgb(161, 161, 161) 5px 8px 10px;
+}
+
+.place > h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.place > img {
+  height: 70%;
+  width: 100%;
+}
+
+.place > h3 {
+  color: grey;
+}
+
+.place > h3 > span {
+  color: rgba(255, 187, 0, 1);
+}
