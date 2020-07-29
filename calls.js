@@ -1,14 +1,17 @@
 const https = require("follow-redirects").https;
 const fs = require("fs");
+const src = require('./config.js')
+
+
 
 
 let options = {
   method: "GET",
-  hostname: host,
-  path: path,
+  hostname: src.host,
+  path: src.path,
   headers: {
     Authorization:
-      `Bearer ${bearer}`,
+      `Bearer ${src.bearer}`,
   },
   maxRedirects: 20,
 };
@@ -28,8 +31,8 @@ const loginCall = https.request(options, function (res) {
   res.on("error", function (error) {
     console.error(error);
   });
+  console.log(chunks)
 });
 
 loginCall.end();
 
-exports.loginCall = loginCall;
