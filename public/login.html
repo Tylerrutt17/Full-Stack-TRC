@@ -39,7 +39,7 @@
             <li><i class="fab fa-facebook"></i></li>
           </a>
         </ul>
-        <form action="">
+        <form action="/login" method="POST">
           <label for="username">Username</label>
           <br />
           <input type="text" name="username" id="username" />
@@ -47,12 +47,12 @@
           <label for="password">Password</label>
           <br />
           <input type="password" name="password" id="password" />
-          <button class="loginbutton">Login</button>
+          <button class="loginbutton" type="submit">Login</button>
         </form>
         <button class="signup">
-          <a href="signup.html">Not a user? Sign up here</a>
+          <a href="/register">Not a user? Sign up here</a>
         </button>
-        <a href="index.html">Back to main</a>
+        <a href="/">Back to main</a>
       </div>
     </div>
   </body>
