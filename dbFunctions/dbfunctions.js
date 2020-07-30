@@ -33,7 +33,7 @@ const loadUser = async (db, username, callback) => {
     .catch(err=>console.log("Error finding that user...", err))
 }
 
-const attemptLogin = async (db, username, password, passport, callback)=> {
+const attemptLogin = async (db, username, password, callback)=> {
     db.one(`SELECT * FROM users WHERE username='${username.toLowerCase()}'`)
     .then((user)=> {
         console.log(user.favorite_foods)
@@ -42,18 +42,10 @@ const attemptLogin = async (db, username, password, passport, callback)=> {
           if(err)throw err;
             if (isMatch === true) {
               console.log("Correct PASSWORD! "+ user.name)
-              passport.serializeUser(function(user, done) {
-                done(null, user.id);
-                
-            }); 
-            passport.deserializeUser((id, done) => {
-                return done(null, getUserById(id))
-              })
-              
+              callback()
             } else {
               console.log("Wrong Passcode")
-              //return false
-              return
+              
             }
         }) 
     })
