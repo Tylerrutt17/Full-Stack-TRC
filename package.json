@@ -19,7 +19,8 @@
   "homepage": "https://github.com/Tylerrutt17/Full-Stack-Starter#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "follow-redirects": "^1.12.1"
+    "follow-redirects": "^1.12.1",
+    "pg-promise": "^10.5.8"
   },
   "devDependencies": {}
 }

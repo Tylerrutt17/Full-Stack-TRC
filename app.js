@@ -1,22 +1,32 @@
-const express = require('express');
-const { loginCall } = require('./calls');
+const src = require("./config.js");
+const express = require("express");
+const f = require("./calls");
 const app = express();
-require("./api-routes")(app);//sets the api
-const src = require('./config.js')
+const pgp = require('pg-promise')();
+const db = pgp(src.dbConn)
 
-// const apiKey = "e1igrlOBCl2OLF2gvBQxvruvm8U0p1r_fyb-J6ELqw9zldWhE8YpTAHlXyXezJWxI6L-vYl5OB1mC9GvcFS_NGXlDm9RBG8hlv_7HN2wnnL5nboFkfC4-i7sOisgX3Yx"
-// const https = require('https');
-// const options = 
 
+let user = {
+  id: 3,
+  name: 'demo2',
+  username: 'Jeremy Wade',
+  favorite_foods: 'broccoli, carrots',
+  zipcode: '69420',
+  password: '$2y$10$2Xq4WT4fHapnlje5tLmmlePsw9YfNARyxUgYKv.mfGGXKVJ38gmSK',
+  email: null
+}
+
+require("./api-routes")(app); //sets the api
+
+db.any(`SELECT * FROM  users WHERE username = '${user.username}'`).then(data =>{
+  console.log(data)
+})
 
 app.use(express.static("public"));
 
-
 const port = 5434;
-app.listen(port, ()=>{
-    console.log(`listening on http://localhost:${port}`)
-})
+app.listen(port, () => {
+  console.log(`listening on http://localhost:${port}`);
+});
 
-let userZip = '30326';
-
-loginCall.end()
+f;
