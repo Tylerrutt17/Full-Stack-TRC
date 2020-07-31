@@ -19,10 +19,6 @@ app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()) // parse application/json
 
-app.engine('html', es6Renderer) // Whenever html is called, it is going to run everything through this template instead
-app.set('views', "templates") // Tells the renderer where the views are going to be  views are in templates
-app.set('view engine', 'html')
-
 app.use(express.static(__dirname + 'public')); // Static Files
 app.use(express.static(__dirname + '/public')); // Static Files
 
