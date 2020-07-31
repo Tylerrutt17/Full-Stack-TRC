@@ -1,6 +1,6 @@
 const src = require("./config.js");
 const express = require("express");
-const f = require("./calls");
+const calls = require("./calls");
 const app = express();
 const pgp = require('pg-promise')();
 const db = pgp(src.dbConn)
@@ -29,4 +29,7 @@ app.listen(port, () => {
   console.log(`listening on http://localhost:${port}`);
 });
 
-f;
+// calls.lc;
+calls.sc
+
+module.exports = user
