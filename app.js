@@ -11,6 +11,7 @@ var dbfunctions = require('./dbFunctions/dbfunctions.js')
 const bcrypt = require('bcrypt')
 const es6Renderer = require('express-es6-template-engine');
 
+
 app.use(flash())
 app.use(express.static("dbFunctions"));
 // Static Files
@@ -34,7 +35,7 @@ app.use(bodyParser.json())
 var currentUser = [];
 
 // Connection to Elephant SQL database   // Pg proimse
-const db = pgp('postgres://dghqeslf:mNRbeXOviur1ep7cTdIZ2Gt0lzDs2UNi@ruby.db.elephantsql.com:5432/dghqeslf')
+const db = require('./config').database
 
 app.use(session({
     // Key that is kept secret that is going to encrypt all of the information
