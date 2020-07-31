@@ -11,6 +11,7 @@ var dbfunctions = require('./dbFunctions/dbfunctions.js')
 const bcrypt = require('bcrypt')
 const es6Renderer = require('express-es6-template-engine');
 
+
 app.use(flash())
 app.use(express.static("dbFunctions"));
 // Static Files
@@ -34,7 +35,7 @@ app.use(bodyParser.json())
 var currentUser = [];
 
 // Connection to Elephant SQL database   // Pg proimse
-const db = pgp('postgres://dghqeslf:mNRbeXOviur1ep7cTdIZ2Gt0lzDs2UNi@ruby.db.elephantsql.com:5432/dghqeslf')
+const db = require('./config').database
 
 app.use(session({
     // Key that is kept secret that is going to encrypt all of the information
@@ -59,23 +60,21 @@ app.get('/', checkAuthenticated, (req, res) => {
   
 // Can't go to the login page if not authenticated
 app.get('/login', (req, res) => {
-    console.log('get login')
+
     res.sendFile(path.join(__dirname + '/public/login.html'));
 })
 
 const setUser = async (req, res, next)=> {
-    console.log("USERNAEEMe "+req.body.username.toLowerCase())
     db.one(`SELECT * FROM users WHERE username = '${req.body.username.toLowerCase()}'`)
     .then(user=> {
         // Add user to users array
-        console.log('current user '+user.name)
         currentUser[0] = user
         next()
     })
-    .catch(err=>console.log('ERROR ERROR ERROR '+ err));
+    .catch(err=>console.log('ERROR '+ err));
          
 }
-
+//
 app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
     res.redirect('/')
 })
@@ -92,14 +91,12 @@ app.post('/register', checkNotAuthenticated, addUser, async (req, res) => {
 
 app.delete('/logout', (req, res) => {
     console.log('Logged Out')
-    console.log("Current User LANGTH "+currentUser.length)
     currentUser = []
     currentUser.length = 0
     res.redirect('/login')
 })
 
 function checkAuthenticated(req, res, next) {
-    console.log('indxe')
     if (!currentUser || !currentUser.length) {
         console.log('checkauth1 '+ currentUser + " " + currentUser.length)
         return res.redirect('/login')
@@ -109,7 +106,6 @@ function checkAuthenticated(req, res, next) {
 }
 
 function checkNotAuthenticated(req, res, next) { 
-    console.log('checkauth '+ currentUser + " : " + currentUser.length) 
     if (currentUser || currentUser.length) {
         return res.redirect('/')
     }
