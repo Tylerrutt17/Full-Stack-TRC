@@ -37,11 +37,22 @@ app.use(session({
     saveUninitialized: false
 }))
 
+// Uses the dbfunctions
 const attemptLogin = (req, res, next) => {
-    dbfunctions.attemptLogin(db, req.body.username, req.body.password, next)
+    dbfunctions.attemptLogin(db, req.body.username, req.body.password, next, res)
 }
+// Uses the dbfunctions
 const addUser = (req, res, next) => {
     dbfunctions.uploadNewUser(db, req.body.fullname, req.body.email, req.body.username, req.body.foods, req.body.zipcode, req.body.password, next)
+}
+
+const setUser = async (req, res, next)=> {
+    db.one(`SELECT * FROM users WHERE username = '${req.body.username.toLowerCase()}'`)
+    .then(user=> {
+        currentUser[0] = user // Set user as current user
+        next()
+    })
+    .catch(err=>console.log('ERROR '+ err))    
 }
 
 app.get('/', checkAuthenticated, (req, res) => {
@@ -51,20 +62,9 @@ app.get('/', checkAuthenticated, (req, res) => {
 })
   
 // Can't go to the login page if not authenticated
-app.get('/login', (req, res) => {
+app.get('/login',(req, res) => {
     res.sendFile(path.join(__dirname + '/public/login.html'));
 })
-
-const setUser = async (req, res, next)=> {
-    db.one(`SELECT * FROM users WHERE username = '${req.body.username.toLowerCase()}'`)
-    .then(user=> {
-        // Add user to users array
-        currentUser[0] = user
-        next()
-    })
-    .catch(err=>console.log('ERROR '+ err));
-         
-}
 
 app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
     res.redirect('/')
@@ -87,46 +87,25 @@ app.delete('/logout', (req, res) => {
     res.redirect('/login')
 })
 
+
 function checkAuthenticated(req, res, next) {
     if (!currentUser || !currentUser.length) {
-        console.log('checkauth1 '+ currentUser + " " + currentUser.length)
+        console.log('There is not a user')
         return res.redirect('/login')
     }
-    console.log('There is not a user')
+    console.log('There IS a user')
     next()
 }
 
 function checkNotAuthenticated(req, res, next) { 
     if (currentUser || currentUser.length) {
+        console.log('There is a user')
         return res.redirect('/')
     }
-    console.log('There is a user')
+    console.log('There is not user')
     next()
     
 }
-  
-const authenticateUser = async (email, password) => {
-    console.log("authenticate user "+email.toLowerCase())
-
-    // Process of initializing a new user
-    db.one(`SELECT * FROM users WHERE username='${email.toLowerCase()}'`)
-    .then(user=> {
-        console.log(user.password + " aaa " + password)
-
-        bcrypt.compare(password,user.password,(err,isMatch)=>{
-        if(err)throw err;
-            if (isMatch === true) {
-            console.log("Correct PASSWORD! "+ user.name)
-            currentUser.push(user)
-            } else {
-            console.log("Wrong Passcode")
-            }
-        })
-    })
-    .catch(err=>console.log('help '+err));
-  }
-  
-
 
 const port = 5000;
 app.listen(port, ()=>{
