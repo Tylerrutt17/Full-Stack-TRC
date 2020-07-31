@@ -49,8 +49,8 @@
           <div class="navitems">
             <h3>Food<span>-ify</span></h3>
             <ul>
-              <a href=""><li>Something</li></a>
-              <a href=""><li>Nothing</li></a>
+              <a href="#review"><li>Review</li></a>
+              <a href=""><li>View</li></a>
               <a href=""><li>Lorem</li></a>
             </ul>
             <button class="logout">Logout</button>
@@ -80,6 +80,104 @@
             <p>Leave a review?</p>
           </div>
         </div>
+        <div class="searchdiv">
+          <div class="searchbars">
+            <h1>Search for your food</h1>
+            <form action="">
+              <input
+                placeholder="Your favorite food interests or restaurant..."
+                type="search"
+                name="searchbar1"
+                id="searchbar1"
+              />
+              <input
+                placeholder="Your location"
+                type="search"
+                name="searchbar2"
+                id="searchbar2"
+              />
+              <button type="submit" class="submitsearch">
+                Search <i class="fas fa-search"></i>
+              </button>
+            </form>
+            <ul>
+              <li><i class="fas fa-utensils"></i> Restaurants</li>
+              <li><i class="fas fa-motorcycle"></i> Delivery Services</li>
+            </ul>
+          </div>
+        </div>
+        <div id="restaurant" class="restaurantpage">
+          <div id="secondary-slider" class="splide">
+            <div class="restaurantpictures splide__track">
+              <ul class="splide__list">
+                <li class="splide__slide"><img src="eggplate.jpg" alt="" /></li>
+                <li class="splide__slide">
+                  <img src="fruitplate.jpg" alt="" />
+                </li>
+                <li class="splide__slide"><img src="conch.jpg" alt="" /></li>
+              </ul>
+              <div class="arrows">
+                <i class="fas fa-arrow-left arrow1"></i
+                ><i class="fas fa-arrow-right arrow2"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats">
+            <h1>Restaurant Name</h1>
+            <p>$$$</p>
+            <h3>Type of restaurant</h3>
+            <h2>Hours and Locations</h2>
+            <ul>
+              <li>
+                <button type="submit" class="submitbutton">
+                  <i class="fas fa-check"></i> Write a Review
+                </button>
+              </li>
+              <li>
+                <button type="submit">
+                  <i class="far fa-bookmark"></i> Save
+                </button>
+              </li>
+              <li>
+                <button type="submit">
+                  <i class="fas fa-camera"></i> Upload Picture
+                </button>
+              </li>
+              <li>
+                <button type="submit">
+                  <i class="fas fa-share-square"></i> Share
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="placeorder">
+            <div class="top">
+              <h2>Order food?</h2>
+              <input type="text" name="" id="" placeholder="Your address" />
+              <button type="submit" class="submitorder">Place Order</button>
+            </div>
+            <div class="bottom">
+              <ul>
+                <a href=""
+                  ><li><i class="fas fa-external-link-alt"></i> Website</li></a
+                >
+                <a href=""
+                  ><li><i class="fas fa-phone"></i> Phone Number:</li></a
+                >
+                <a href=""
+                  ><li><i class="fas fa-map-marker-alt"></i> Directions</li></a
+                >
+                <a href=""
+                  ><li style="border: none;">
+                    <i class="fas fa-utensils"></i> Their menu
+                  </li></a
+                >
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="review" class="reviewpage"></div>
       </div>
     </div>
   </body>
