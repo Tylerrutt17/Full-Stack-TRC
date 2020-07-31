@@ -4,12 +4,9 @@ require("./api-routes")(app);//sets the api
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
-const pgp = require('pg-promise')() // Sql
 var path = require('path');
 var bodyParser = require('body-parser') 
 var dbfunctions = require('./dbFunctions/dbfunctions.js')
-const bcrypt = require('bcrypt')
-const es6Renderer = require('express-es6-template-engine');
 
 const db = require('./config').database // Connection to Elephant SQL database   // Pg proimse
 
@@ -86,7 +83,6 @@ app.delete('/logout', (req, res) => {
     currentUser.length = 0
     res.redirect('/login')
 })
-
 
 function checkAuthenticated(req, res, next) {
     if (!currentUser || !currentUser.length) {
