@@ -1,5 +1,9 @@
-const express = require('express');
+const src = require("./config.js");
+const express = require("express");
+const calls = require("./calls");
 const app = express();
+const pgp = require('pg-promise')();
+const db = pgp(src.dbConn)
 require("./api-routes")(app);//sets the api
 const flash = require('express-flash')
 const session = require('express-session')
@@ -7,11 +11,14 @@ const methodOverride = require('method-override')
 var path = require('path');
 var bodyParser = require('body-parser') 
 var dbfunctions = require('./dbFunctions/dbfunctions.js')
+const bcrypt = require('bcrypt')
+const es6Renderer = require('express-es6-template-engine');
 
 const db = require('./config').database // Connection to Elephant SQL database   // Pg proimse
 
 // User instance if logged in
 var currentUser = [];
+let user = currentUser[0];
 
 app.use(flash())
 app.use(express.static("dbFunctions"));
@@ -93,3 +100,6 @@ const port = 5000;
 app.listen(port, ()=>{
     console.log(`listening on http://localhost:${port}`)
 })
+
+
+module.exports = user
