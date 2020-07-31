@@ -1,26 +1,19 @@
 const bcrypt = require('bcrypt')
 const pgp = require('pg-promise')()
 
-const hello = () => {
-    console.log("hello from db")
-}
-
 const uploadNewUser = async (db, name, email, username, favorite_foods, zipcode, rawpassword, callback)=>{
     // Hashes the raw password using bcrypt.
     const hashedPassword = await bcrypt.hash(rawpassword, 10)
 
     // Username is unique, will error out if it conflicts with a previous username
     db.none(`INSERT INTO users (name, username, email, favorite_foods, zipcode, password) VALUES ('${name}', '${username.toLowerCase()}', '${email}', '${favorite_foods}', '${zipcode}', '${hashedPassword}')`)
-    .then(()=>{
-        console.log("Successfully created and instantiated user into the DB!")
+    .then((log)=>{
+        console.log("Successfully created and instantiated user into the DB! "+log)
         callback()
     })
     //.catch(() => console.log("Error Uploading User To DB. :("))
 }
 
-const callback = () => {
-    console.log("cool")
-}
 //uploadNewUser(db, 'test name', 'testuser1', 'grass, flowers', '30243', '123456', callback)
 
 // Based on a users username you can load that specific users information
@@ -58,5 +51,5 @@ const attemptLogin = async (db, username, password, callback)=> {
 //attemptLogin(db, 'testuser', '123456')
 
 module.exports = {
-    uploadNewUser, loadUser, attemptLogin, hello
+    uploadNewUser, loadUser, attemptLogin
 }
