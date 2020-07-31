@@ -60,20 +60,18 @@ app.get('/', checkAuthenticated, (req, res) => {
   
 // Can't go to the login page if not authenticated
 app.get('/login', (req, res) => {
-    console.log('get login')
+
     res.sendFile(path.join(__dirname + '/public/login.html'));
 })
 
 const setUser = async (req, res, next)=> {
-    console.log("USERNAEEMe "+req.body.username.toLowerCase())
     db.one(`SELECT * FROM users WHERE username = '${req.body.username.toLowerCase()}'`)
     .then(user=> {
         // Add user to users array
-        console.log('current user '+user.name)
         currentUser[0] = user
         next()
     })
-    .catch(err=>console.log('ERROR ERROR ERROR '+ err));
+    .catch(err=>console.log('ERROR '+ err));
          
 }
 //
@@ -93,14 +91,12 @@ app.post('/register', checkNotAuthenticated, addUser, async (req, res) => {
 
 app.delete('/logout', (req, res) => {
     console.log('Logged Out')
-    console.log("Current User LANGTH "+currentUser.length)
     currentUser = []
     currentUser.length = 0
     res.redirect('/login')
 })
 
 function checkAuthenticated(req, res, next) {
-    console.log('indxe')
     if (!currentUser || !currentUser.length) {
         console.log('checkauth1 '+ currentUser + " " + currentUser.length)
         return res.redirect('/login')
@@ -110,7 +106,6 @@ function checkAuthenticated(req, res, next) {
 }
 
 function checkNotAuthenticated(req, res, next) { 
-    console.log('checkauth '+ currentUser + " : " + currentUser.length) 
     if (currentUser || currentUser.length) {
         return res.redirect('/')
     }
