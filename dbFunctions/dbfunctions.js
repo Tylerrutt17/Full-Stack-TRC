@@ -38,7 +38,6 @@ const attemptLogin = async (db, username, password, callback)=> {
               callback()
             } else {
               console.log("Wrong Passcode")
-              
             }
         }) 
     })
@@ -47,6 +46,7 @@ const attemptLogin = async (db, username, password, callback)=> {
         
     })
 }
+
 
 //attemptLogin(db, 'testuser', '123456')
 
