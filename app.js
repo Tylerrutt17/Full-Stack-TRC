@@ -97,16 +97,6 @@ function checkAuthenticated(req, res, next) {
     next()
 }
 
-function checkNotAuthenticated(req, res, next) { 
-    if (currentUser || currentUser.length) {
-        console.log('There is a user')
-        return res.redirect('/')
-    }
-    console.log('There is not user')
-    next()
-    
-}
-
 const port = 5000;
 app.listen(port, ()=>{
     console.log(`listening on http://localhost:${port}`)
