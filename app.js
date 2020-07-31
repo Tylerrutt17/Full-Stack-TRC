@@ -11,31 +11,23 @@ var dbfunctions = require('./dbFunctions/dbfunctions.js')
 const bcrypt = require('bcrypt')
 const es6Renderer = require('express-es6-template-engine');
 
+const db = require('./config').database // Connection to Elephant SQL database   // Pg proimse
+
+// User instance if logged in
+var currentUser = [];
 
 app.use(flash())
 app.use(express.static("dbFunctions"));
-// Static Files
-app.use(express.static(__dirname + 'public'));
-app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'))
+app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()) // parse application/json
 
-// Whenever html is called, it is going to run everything through this template instead
-app.engine('html', es6Renderer)
-
-// Tells the renderer where the views are going to be  views are in templates
-app.set('views', "templates")
+app.engine('html', es6Renderer) // Whenever html is called, it is going to run everything through this template instead
+app.set('views', "templates") // Tells the renderer where the views are going to be  views are in templates
 app.set('view engine', 'html')
 
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
-app.use(bodyParser.json())
-
-var currentUser = [];
-
-// Connection to Elephant SQL database   // Pg proimse
-const db = require('./config').database
+app.use(express.static(__dirname + 'public')); // Static Files
+app.use(express.static(__dirname + '/public')); // Static Files
 
 app.use(session({
     // Key that is kept secret that is going to encrypt all of the information
@@ -49,7 +41,7 @@ const attemptLogin = (req, res, next) => {
     dbfunctions.attemptLogin(db, req.body.username, req.body.password, next)
 }
 const addUser = (req, res, next) => {
-    dbfunctions.uploadNewUser(db, req.body.fullname, req.body.email, req.body.username, req.body.password, req.body.zipcode, req.body.foods)
+    dbfunctions.uploadNewUser(db, req.body.fullname, req.body.email, req.body.username, req.body.foods, req.body.zipcode, req.body.password, next)
 }
 
 app.get('/', checkAuthenticated, (req, res) => {
@@ -60,7 +52,6 @@ app.get('/', checkAuthenticated, (req, res) => {
   
 // Can't go to the login page if not authenticated
 app.get('/login', (req, res) => {
-
     res.sendFile(path.join(__dirname + '/public/login.html'));
 })
 
@@ -74,7 +65,7 @@ const setUser = async (req, res, next)=> {
     .catch(err=>console.log('ERROR '+ err));
          
 }
-//
+
 app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
     res.redirect('/')
 })
@@ -84,7 +75,7 @@ app.get('/register', (req, res) => {
     //res.sendfile('./main.html');
 })
 
-app.post('/register', checkNotAuthenticated, addUser, async (req, res) => {
+app.post('/registernewuser', addUser, async (req, res) => {
     // Name is used in the initiation of fields in each view, ID of sorts
     res.redirect('/login')
 })
@@ -131,11 +122,8 @@ const authenticateUser = async (email, password) => {
             console.log("Wrong Passcode")
             }
         })
-    
-        })
-        .catch(err=>console.log('help '+err));
-    
-    console.log('initialize')
+    })
+    .catch(err=>console.log('help '+err));
   }
   
 
