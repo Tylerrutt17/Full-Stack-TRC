@@ -599,7 +599,6 @@ textarea:focus {
   .submitsearch > i {
     font-size: 15px;
     position: absolute;
-    left: ;
     margin-left: -25px;
     color: rgb(255, 187, 0);
   }
