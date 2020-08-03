@@ -19,6 +19,10 @@ button:focus {
   outline: none;
 }
 
+textarea:focus {
+  outline: none;
+}
+
 .main {
   height: 90vh;
   width: 90%;
@@ -38,25 +42,26 @@ button:focus {
   justify-content: center;
 }
 
-.yellowblock>h1 {
+.yellowblock > h1 {
   font-weight: bold;
   position: absolute;
   top: 20%;
   text-transform: uppercase;
+  font-size: min(max(16px, 4vw), 22px);
 }
 
-.yellowblock>.profilepic {
-  height: 200px;
-  width: 200px;
+.yellowblock > .profilepic {
+  height: 80%;
+  width: 50%;
   background-color: rgb(235, 235, 235);
   border: 1px solid white;
   position: absolute;
   bottom: -40%;
 }
 
-.profilepic>img {
-  height: 200px;
-  width: 200px;
+.profilepic > img {
+  height: 100%;
+  width: 100%;
 }
 
 .left {
@@ -66,54 +71,62 @@ button:focus {
   width: 25%;
 }
 
-.left>.personal {
+.left > .personal {
   text-align: center;
   height: 55%;
-  width: 100%;
+  width: 90%;
   position: absolute;
   bottom: 0;
 }
 
-.personal>i {
+.personal > h1 {
+  font-size: min(max(16px, 4vw), 22px);
+}
+
+.personal > i {
   font-size: 25px;
+  font-size: min(max(12px, 4vw), 22px);
   margin-bottom: 10px;
   color: rgb(161, 161, 161);
 }
 
-.personal>h3 {
+.personal > h3 {
   margin-bottom: 20px;
+  font-size: min(max(12px, 4vw), 22px);
 }
 
-.personal>ul {
+.personal > ul {
   display: block;
   list-style: none;
   width: 80%;
+  height: 30%;
   position: absolute;
   left: 4%;
   text-align: left;
 }
 
-.personal>ul>a {
+.personal > ul > a {
   text-decoration: none;
   font-size: 20px;
+  font-size: min(max(12px, 4vw), 20px);
 }
 
-.personal>ul>a>li {
+.personal > ul > a > li {
   padding: 5px;
-  margin: 20px 0;
+  margin: auto;
   text-decoration: none;
   color: black;
 }
 
-.personal>.follow {
+.personal > .follow {
   position: absolute;
   bottom: 7%;
-  left: 27%;
+  left: 5%;
   color: white;
   background-color: rgba(255, 187, 0, 1);
   border: none;
-  height: 40px;
-  width: 200px;
+  height: 10%;
+  width: 50%;
   font-weight: bold;
   text-transform: uppercase;
   box-shadow: rgb(161, 161, 161) 0px 7px 5px;
@@ -137,17 +150,19 @@ button:focus {
 
 .right::-webkit-scrollbar-thumb {
   background: rgb(212, 180, 0);
-  background: linear-gradient(180deg,
-      rgba(255, 187, 0, 1) 7%,
-      rgba(244, 221, 6, 1) 47%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 187, 0, 1) 7%,
+    rgba(244, 221, 6, 1) 47%
+  );
 }
 
-.right>.nav {
+.right > .nav {
   height: 10vh;
   width: 100%;
 }
 
-.right>.nav>.navitems {
+.right > .nav > .navitems {
   background-color: rgb(255, 255, 255);
   height: 100%;
   width: 100%;
@@ -157,23 +172,23 @@ button:focus {
   border-left: grey 1px solid;
 }
 
-.navitems>h3 {
+.navitems > h3 {
   color: rgb(0, 0, 0);
   font-size: 30px;
   margin: auto 0;
   text-transform: uppercase;
 }
 
-.navitems>h3>span {
+.navitems > h3 > span {
   color: rgb(255, 187, 0);
 }
 
-.navitems>ul {
+.navitems > ul {
   display: flex;
   list-style: none;
 }
 
-.navitems>ul>a {
+.navitems > ul > a {
   color: rgb(0, 0, 0);
   text-decoration: none;
   margin: auto 30px;
@@ -182,7 +197,7 @@ button:focus {
   text-transform: uppercase;
 }
 
-.navitems>.logout {
+.navitems > .logout {
   background-color: white;
   border: black 2px solid;
   height: 40px;
@@ -193,16 +208,19 @@ button:focus {
   text-transform: uppercase;
 }
 
-.right>.searchdiv {
+.right > .searchdiv {
   height: 60%;
   width: 100%;
   position: absolute;
-  top: 24%;
+  bottom: -800px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   background-color: rgb(0, 0, 0);
 }
 
-.searchdiv>.searchbars {
+.searchdiv > .searchbars {
   margin: auto;
   position: absolute;
   top: 30%;
@@ -210,23 +228,23 @@ button:focus {
   text-align: center;
 }
 
-.searchbars>h1 {
-  font-size: 50px;
+.searchbars > h1 {
+  font-size: min(max(16px, 5vw), 40px);
   color: white;
   margin-bottom: 10px;
 }
 
-.searchbars>form>input {
-  height: 41px;
+.searchbars > form > input {
+  height: 40px;
   width: 35%;
   border-radius: 5px 0 0 5px;
-  margin: 0 -7px;
+  margin: 0 7px;
   border: none;
   padding-left: 10px;
   font-size: 17px;
 }
 
-.searchbars>form>.submitsearch {
+.searchbars > form > .submitsearch {
   background-color: rgba(255, 187, 0, 1);
   color: white;
   font-weight: bold;
@@ -239,75 +257,78 @@ button:focus {
   padding-bottom: 3px;
 }
 
-.searchbars>form>.submitsearch>i {
+.searchbars > form > .submitsearch > i {
   padding-left: 2px;
 }
 
-.searchbars>ul {
+.searchbars > ul {
   list-style: none;
   display: flex;
   position: absolute;
-  left: 34%;
+  left: 16%;
 }
 
-.searchbars>ul>li {
+.searchbars > ul > li {
   color: white;
   margin: 10px 20px;
 }
 
-.right>.intro {
-  height: 20vh;
+.right > .intro {
+  height: 20%;
   width: 100%;
   position: absolute;
-  top: 90%;
+  top: 25%;
 }
 
-.intro>h1 {
-  font-size: 100px;
+.intro > h1 {
+  font-size: min(max(16px, 5vw), 80px);
   font-family: "Merriweather";
-  text-align: left;
-  margin: 0 20px;
-}
-
-.intro>h2 {
-  font-family: "Merriweather";
-  font-size: 30px;
   text-align: center;
+  margin: auto 30px;
+}
+
+.intro > h2 {
+  font-size: min(max(16px, 4vw), 22px);
+  font-family: "Merriweather";
+  text-align: center;
+  margin: auto;
 }
 
 .eats {
-  height: 43vh;
+  height: 40%;
   width: 100%;
   position: absolute;
-  bottom: -600px;
+  bottom: 5%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.eats>.place {
-  height: 100%;
+.eats > .place {
+  height: 80%;
   width: 30%;
   text-align: center;
-  line-height: 30px;
+  line-height: 20px;
   box-shadow: rgb(161, 161, 161) 5px 8px 10px;
 }
 
-.place>h2 {
-  font-size: 30px;
+.place > h2 {
+  font-size: min(max(16px, 4vw), 22px);
   margin-bottom: 8px;
 }
 
-.place>img {
+.place > img {
   height: 70%;
   width: 100%;
 }
 
-.place>h3 {
+.place > h3 {
   color: grey;
+  font-size: min(max(12px, 4vw), 18px);
 }
 
-.place>h3>span {
+.place > h3 > span {
   color: rgba(255, 187, 0, 1);
+  font-size: min(max(10px, 4vw), 15px);
 }
 
 .restaurantpage {
@@ -317,90 +338,51 @@ button:focus {
   bottom: -1700px;
 }
 
-.restaurantpictures {
+.restaurantpage > .searchresults {
   background-color: rgb(255, 187, 0);
-  height: 45%;
+  height: 40%;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  overflow-x: scroll;
 }
 
-.restaurantpictures>img {
-  height: 80%;
-  width: auto;
-  margin: auto 0;
-}
-
-.restaurantpictures>.arrows {
-  font-size: 30px;
-  height: 4.5%;
-  width: 10%;
-  color: rgb(255, 255, 255);
-  position: absolute;
-  left: 5%;
-  top: 40.5%;
-}
-
-.arrows>.arrow1 {
-  position: absolute;
-  left: 0;
-  margin: 10px 5px;
-  transition: .3s;
-}
-
-.arrows>.arrow2 {
-  position: absolute;
-  right: 0;
-  margin: 10px 5px;
-  transition: .3s;
-}
-
-.arrow1:hover {
-  transform: scale(1.2);
-}
-
-.arrow2:hover {
-  transform: scale(1.2);
-}
-
-.restaurantpage>.stats {
+.restaurantpage > .stats {
   position: absolute;
   margin: 0 10px;
-  bottom: 20%;
+  bottom: 2%;
   width: 50%;
-  height: 30%;
+  height: 50%;
   line-height: 35px;
   border-bottom: rgb(230, 230, 230) 1px solid;
 }
 
-.stats>h1 {
+.stats > h1 {
   font-size: 60px;
 }
 
-.stats>p {
+.stats > p {
   color: rgba(255, 187, 0, 1);
   font-size: 22px;
 }
 
-.stats>h3 {
+.stats > h3 {
   color: rgb(78, 78, 78);
 }
 
-.stats>h2 {
+.stats > h2 {
   color: rgb(49, 49, 49);
   margin-bottom: 20px;
 }
 
-.stats>ul {
+.stats > ul {
   list-style: none;
   display: flex;
 }
 
-.stats>ul>li {
+.stats > ul > li {
   margin-right: 10px;
 }
 
-.stats>ul>li>button {
+.stats > ul > li > button {
   height: 40px;
   width: auto;
   padding: 10px;
@@ -409,12 +391,99 @@ button:focus {
   border: none;
 }
 
-.stats>ul>li>.submitbutton {
+.stats > ul > li > .submitbutton {
   background-color: rgb(255, 187, 0);
   color: white;
 }
 
-.placeorder {
+.stats > .reviewpage {
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+
+.reviewpage > form {
+  height: 100%;
+  width: 100%;
+}
+
+.reviewpage > form > textarea {
+  height: 50%;
+  width: 90%;
+  border-radius: 5px;
+  position: absolute;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.reviewpage > form > .submitreview {
+  background-color: rgb(255, 187, 0);
+  height: 40px;
+  width: 200px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 2%;
+  right: 6.5%;
+  font-weight: bold;
+}
+
+.reviewpage > .picbox {
+  background-color: lightgrey;
+  display: flex;
+  justify-content: center;
+  height: 80%;
+  width: 70%;
+  border-radius: 5px;
+}
+
+.picbox > i {
+  font-size: 80px;
+  margin: auto 0;
+  color: white;
+}
+
+.filebox {
+  height: 60px;
+  width: 70%;
+  background-color: rgb(255, 187, 0);
+  overflow: hidden;
+  position: absolute;
+  bottom: 10%;
+  border-radius: 0px 0px 5px 5px;
+  display: flex;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.filebox:hover {
+  cursor: pointer;
+  background-color: rgb(228, 167, 1);
+}
+
+.filebox > i {
+  font-size: 40px;
+  margin: auto 0;
+  color: white;
+}
+
+.picbox > .filebox > input[type="file"] {
+  font-size: 100px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.restaurantpage > .placeorder {
   position: absolute;
   right: 10%;
   bottom: 2%;
@@ -424,7 +493,7 @@ button:focus {
   flex-direction: column;
 }
 
-.placeorder>.top {
+.placeorder > .top {
   height: 45%;
   width: 100%;
   border: 1px solid rgb(224, 224, 224);
@@ -436,7 +505,7 @@ button:focus {
   background-color: white;
 }
 
-.top>input {
+.top > input {
   height: 40px;
   width: 85%;
   padding-left: 6px;
@@ -446,7 +515,7 @@ button:focus {
   border: 0.4px solid lightgrey;
 }
 
-.top>.submitorder {
+.top > .submitorder {
   height: 40px;
   width: 85%;
   margin: 10px auto;
@@ -459,7 +528,7 @@ button:focus {
   font-weight: bold;
 }
 
-.placeorder>.bottom {
+.placeorder > .bottom {
   height: 48%;
   width: 100%;
   border: 1px solid rgb(224, 224, 224);
@@ -468,20 +537,239 @@ button:focus {
   background-color: white;
 }
 
-.bottom>ul {
+.bottom > ul {
   position: absolute;
   list-style: none;
   width: 70%;
 }
 
-.bottom>ul>a {
+.bottom > ul > a {
   font-size: 17px;
   margin: 1px;
   text-decoration: none;
   color: black;
 }
 
-.bottom>ul>a>li {
+.bottom > ul > a > li {
   padding: 4px 0;
   border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.restaurantpage > .mapdiv {
+  height: 70vh;
+  width: 100%;
+  position: absolute;
+  bottom: -700px;
+  background-color: rgb(211, 211, 211);
+}
+
+@media all and (min-width: 320px) and (max-width: 425px) {
+  .main {
+    width: 100%;
+  }
+  .left {
+    display: none !important;
+  }
+  .right {
+    width: 100% !important;
+  }
+
+  #searchbar1 {
+    left: 0;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .submitsearch {
+    display:  !important;
+    margin-left: 0;
+    height: 
+    width: 1px !important;
+  }
+
+  .submitsearch > i {
+    font-size: 20px;
+    margin-left: -25px;
+    color: rgb(255, 187, 0);
+  }
+}
+
+@media all and (max-width: 768px) {
+  .left {
+    width: 40%;
+  }
+
+  .personal {
+    height: 50px;
+  }
+
+  .personal > img {
+    height: 70%;
+  }
+  .right {
+    width: 60%;
+  }
+
+  .eats {
+    top: 45%;
+  }
+
+  .place {
+    line-height: 10px;
+  }
+
+  .searchbars > ul {
+    width: 100%;
+    display: block;
+    text-align: left;
+    margin: auto;
+  }
+
+  .searchbars > ul > li {
+    font-size: 12px;
+    text-align: left;
+  }
+
+  #searchbar1 {
+    width: 70%;
+    left: 0;
+    margin: auto;
+  }
+
+  #searchbar2 {
+    display: none;
+  }
+  .searchdiv {
+    left: 0;
+    top: 10%;
+    height: 10%;
+  }
+
+  .restaurantpage {
+    bottom: -2000px;
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .main {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+  }
+
+  .left {
+    overflow-y: scroll;
+    width: 30%;
+  }
+
+  .right {
+    width: 70%;
+  }
+
+  .profilepic {
+    height: 50%;
+    width: 80%;
+  }
+
+  .profilepic > img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .personal > ul {
+    height: 40%;
+  }
+
+  .personal > ul > a {
+    margin: 0px;
+    height: 10px;
+  }
+
+  .personal > .follow {
+    bottom: 8%;
+  }
+
+  .searchdiv {
+    height: 5%;
+    width: 100%;
+    left: 0;
+    top: 30%;
+  }
+
+  .eats {
+    top: 100%;
+  }
+
+  .place {
+    margin-top: 25px;
+    padding: 10px 0;
+  }
+
+  .restaurantpage {
+    left: 0;
+  }
+
+  .searchbars > form > input {
+    height: 40px;
+    margin: 0 -7px;
+  }
+
+  .searchbars > ul {
+    left: 0;
+    font-size: 14px;
+  }
+
+  .searchbars > ul > li {
+    margin: 5px 12px;
+  }
+
+  .submitsearch {
+    height: 30px;
+  }
+}
+
+@media all and (max-width: 1440px) {
+  .main {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+  }
+
+  .left {
+    overflow-y: scroll;
+  }
+
+  .profilepic {
+    height: 70%;
+    width: 90%;
+  }
+
+  .profilepic > img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .intro > h2 {
+    display: none;
+  }
+  .searchdiv {
+    height: 5%;
+    width: 100%;
+    left: 0;
+    top: 30%;
+  }
+
+  .eats {
+    top: 100%;
+  }
+
+  .restaurantpage {
+    left: 0;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .restaurantpage {
+    bottom: -1400px;
+  }
 }

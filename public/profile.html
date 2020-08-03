@@ -20,11 +20,17 @@
       rel="stylesheet"
       href="//use.fontawesome.com/releases/v5.0.7/css/all.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="profile.css" />
   </head>
   <body>
-    <div class="main">
-      <div class="left">
+    <div class="row main">
+      <div class="col left">
         <div class="yellowblock">
           <h1>Welcome Back!</h1>
           <div class="profilepic">
@@ -44,7 +50,7 @@
           <button class="follow">Follow</button>
         </div>
       </div>
-      <div class="right">
+      <div class="col right">
         <div class="nav">
           <div class="navitems">
             <h3>Food<span>-ify</span></h3>
@@ -56,31 +62,33 @@
             <button class="logout">Logout</button>
           </div>
         </div>
-        <div class="intro">
+        <div class="row intro">
           <h1>Let's Eat, Christian.</h1>
           <h2>Here are some spots...</h2>
         </div>
-        <div class="eats">
-          <div class="place">
+        <div
+          class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 eats"
+        >
+          <div class="col place">
             <h2>Sample 1</h2>
             <img src="friedrice.jpg" alt="" />
             <h3>Price Range: <span>$</span></h3>
             <p>Leave a review?</p>
           </div>
-          <div class="place">
+          <div class="col place">
             <h2>Sample 2</h2>
             <img src="burger.jpg" alt="" />
             <h3>Price Range: <span>$$</span></h3>
             <p>Leave a review?</p>
           </div>
-          <div class="place">
+          <div class="col place">
             <h2>Sample 3</h2>
             <img src="eggs.jpg" alt="" />
             <h3>Price Range: <span>$$$</span></h3>
             <p>Leave a review?</p>
           </div>
         </div>
-        <div class="searchdiv">
+        <div class="col searchdiv">
           <div class="searchbars">
             <h1>Search for your food</h1>
             <form action="">
@@ -102,27 +110,40 @@
             </form>
             <ul>
               <li><i class="fas fa-utensils"></i> Restaurants</li>
-              <li><i class="fas fa-motorcycle"></i> Delivery Services</li>
+              <li>
+                <input type="checkbox" name="open" id="open" />
+                <label for="open">Open Now </label>
+              </li>
+              <li>
+                <input type="checkbox" name="delivery" id="delivery" />
+                <i class="fas fa-motorcycle"></i>
+                Delivery Services
+              </li>
+              <li>
+                <input type="checkbox" name="dollar1" id="1dollar" />
+                $
+              </li>
+              <li>
+                <input type="checkbox" name="dollar2" id="2dollars" />
+                $$
+              </li>
+              <li>
+                <input type="checkbox" name="dollar3" id="3dollars" />
+                $$$
+              </li>
+              <li>
+                <input type="checkbox" name="dollar3" id="3dollars" />
+                $$$$
+              </li>
             </ul>
           </div>
         </div>
         <div id="restaurant" class="restaurantpage">
-          <div id="secondary-slider" class="splide">
-            <div class="restaurantpictures splide__track">
-              <ul class="splide__list">
-                <li class="splide__slide"><img src="eggplate.jpg" alt="" /></li>
-                <li class="splide__slide">
-                  <img src="fruitplate.jpg" alt="" />
-                </li>
-                <li class="splide__slide"><img src="conch.jpg" alt="" /></li>
-              </ul>
-              <div class="arrows">
-                <i class="fas fa-arrow-left arrow1"></i
-                ><i class="fas fa-arrow-right arrow2"></i>
-              </div>
-            </div>
+          <div class="searchresults">
+            <h2 class="results">
+              Your Results Here
+            </h2>
           </div>
-
           <div class="stats">
             <h1>Restaurant Name</h1>
             <p>$$$</p>
@@ -140,7 +161,7 @@
                 </button>
               </li>
               <li>
-                <button type="submit">
+                <button type="submit" class="submitpicture">
                   <i class="fas fa-camera"></i> Upload Picture
                 </button>
               </li>
@@ -150,6 +171,34 @@
                 </button>
               </li>
             </ul>
+            <div id="review" class="reviewpage">
+              <form action="">
+                <textarea
+                  placeholder="Write your review here..."
+                  name="review"
+                  id="review"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+                <button class="submitreview" type="submit">
+                  Submit Review
+                </button>
+              </form>
+            </div>
+            <div id="picture" class="reviewpage">
+              <div class="picbox">
+                <i class="far fa-image"></i>
+                <div class="filebox">
+                  <i class="fas fa-plus"></i>
+                  <input
+                    style="font-size: 15px;"
+                    type="file"
+                    id="imageUpload"
+                    accept=".png, .jpg, .jpeg"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           <div class="placeorder">
             <div class="top">
@@ -160,7 +209,9 @@
             <div class="bottom">
               <ul>
                 <a href=""
-                  ><li><i class="fas fa-external-link-alt"></i> Website</li></a
+                  ><li>
+                    <i class="fas fa-external-link-alt"></i> View on Yelp
+                  </li></a
                 >
                 <a href=""
                   ><li><i class="fas fa-phone"></i> Phone Number:</li></a
@@ -177,8 +228,29 @@
             </div>
           </div>
         </div>
-        <div id="review" class="reviewpage"></div>
       </div>
     </div>
   </body>
+  <script src="profile.js"></script>
+  <script>
+    // Initialize and add the map
+    function initMap() {
+      // The location of uluru
+      var uluru = { lat: 32.1656, lng: 82.9001 };
+      // The map, centered at uluru
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: uluru,
+      });
+      // The marker, positioned at uluru
+      var marker = new google.maps.Marker({ position: uluru, map: map });
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+      });
+    }
+  </script>
+  <script
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7o99LcSnY93zc2g7r28JLZCv6BoIFOwk&callback=initMap"
+  ></script>
 </html>
