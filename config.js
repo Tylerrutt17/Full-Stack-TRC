@@ -11,5 +11,4 @@ module.exports = {
     mainPath: `/v3/businesses/search?location=${userZip}`,
     dbConn : "postgres://dghqeslf:mNRbeXOviur1ep7cTdIZ2Gt0lzDs2UNi@ruby.db.elephantsql.com:5432/dghqeslf",
     database: database
-    
 }
