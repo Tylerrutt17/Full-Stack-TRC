@@ -45,7 +45,7 @@ const loginCall = https.request(options, function (res) {
 let openNow = false; //HTML ELEMENT HERE
 let wantDel = false //HTML ELEMENT HERE
 
-let price; //HTML CONNECTION HERE
+let price = 3; //HTML CONNECTION HERE
 let pArr = Array.from({length: price}, (_, index) => index + 1);
 let pString = pArr.toString()
 console.log(pString)
@@ -80,7 +80,8 @@ const specifyCall = https.request(options, function (res) {
     let searchRet = JSON.parse(a)
     let newOpts = searchRet.businesses
 
- 
+    console.log(searchRet)
+    
     newOpts.forEach(e => {
       let choices = [];
       let doThey = e.transactions
@@ -102,5 +103,5 @@ const specifyCall = https.request(options, function (res) {
   });
   
 });
-module.exoprts = {lc : loginCall.end(), sc : specifyCall.end()}
+module.exports = {lc : loginCall.end(), sc : specifyCall.end()}
 
