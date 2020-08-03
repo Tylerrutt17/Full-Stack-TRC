@@ -39,7 +39,7 @@
             <li><i class="fab fa-facebook"></i></li>
           </a>
         </ul>
-        <form action="/attemptlogin" method="POST">
+        <form onsubmit="return false">
           <label for="username">Username</label>
           <br />
           <input type="text" name="username" id="username" />
@@ -47,7 +47,7 @@
           <label for="password">Password</label>
           <br />
           <input type="password" name="password" id="password" />
-          <button class="loginbutton" type="submit">Login</button>
+          <button type="button" class="loginbutton">Login</button>
         </form>
         <button class="signup">
           <a href="/register">Not a user? Sign up here</a>
@@ -55,5 +55,29 @@
         <a href="/">Back to main</a>
       </div>
     </div>
+    <script>
+    
+    document.querySelector('.loginbutton').addEventListener('click', (evt)=> {
+      let password = document.getElementById('password').value 
+      let username = document.getElementById('username').value 
+      console.log(password, username)
+
+      fetch('/attemptlogin', {
+          method:'POST',
+          headers: {
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({password:password, username:username})
+          
+      })
+      .then(data=>data.json())
+      .then(user=>{
+          localStorage.setItem('username', user.username)
+          window.location = "/"
+      })
+
+    })
+    
+    </script>
   </body>
 </html>
