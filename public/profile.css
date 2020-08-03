@@ -211,7 +211,6 @@ textarea:focus {
 .right > .searchdiv {
   height: 60%;
   width: 100%;
-  position: absolute;
   bottom: -800px;
   text-align: center;
   display: flex;
@@ -237,7 +236,7 @@ textarea:focus {
 .searchbars > form > input {
   height: 40px;
   width: 35%;
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px;
   margin: 0 7px;
   border: none;
   padding-left: 10px;
@@ -252,7 +251,7 @@ textarea:focus {
   height: 41px;
   width: 100px;
   border: none;
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 5px;
   padding-top: 5px;
   padding-bottom: 3px;
 }
@@ -304,8 +303,7 @@ textarea:focus {
 }
 
 .eats > .place {
-  height: 80%;
-  width: 30%;
+  height: 90%;
   text-align: center;
   line-height: 20px;
   box-shadow: rgb(161, 161, 161) 5px 8px 10px;
@@ -336,6 +334,8 @@ textarea:focus {
   width: 100%;
   position: absolute;
   bottom: -1700px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
 
 .restaurantpage > .searchresults {
@@ -346,31 +346,32 @@ textarea:focus {
 }
 
 .restaurantpage > .stats {
-  position: absolute;
   margin: 0 10px;
   bottom: 2%;
-  width: 50%;
+  width: 100%;
   height: 50%;
-  line-height: 35px;
+  line-height: 20px;
   border-bottom: rgb(230, 230, 230) 1px solid;
 }
 
 .stats > h1 {
-  font-size: 60px;
+  font-size: min(max(10px, 4vw), 50px);
 }
 
 .stats > p {
   color: rgba(255, 187, 0, 1);
-  font-size: 22px;
+  font-size: min(max(10px, 4vw), 15px);
 }
 
 .stats > h3 {
   color: rgb(78, 78, 78);
+
+  font-size: min(max(10px, 4vw), 15px);
 }
 
 .stats > h2 {
   color: rgb(49, 49, 49);
-  margin-bottom: 20px;
+  font-size: min(max(10px, 4vw), 19px);
 }
 
 .stats > ul {
@@ -379,14 +380,14 @@ textarea:focus {
 }
 
 .stats > ul > li {
-  margin-right: 10px;
+  margin: 0 10px;
 }
 
 .stats > ul > li > button {
   height: 40px;
-  width: auto;
+  width: 100%;
   padding: 10px;
-  font-size: 17px;
+  font-size: min(max(10px, 7vw), 20px);
   border-radius: 5px;
   border: none;
 }
@@ -484,10 +485,6 @@ textarea:focus {
 }
 
 .restaurantpage > .placeorder {
-  position: absolute;
-  right: 10%;
-  bottom: 2%;
-  height: 57%;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -563,7 +560,7 @@ textarea:focus {
   background-color: rgb(211, 211, 211);
 }
 
-@media (max-width: 425px) {
+@media (max-width: 575px) {
   .main {
     width: 100%;
   }
@@ -602,12 +599,16 @@ textarea:focus {
     margin-left: -25px;
     color: rgb(255, 187, 0);
   }
+  .searchdiv {
+    width: 100%;
+  }
 
   .eats {
-    height: 50%;
+    height: 60%;
+    width: 100%;
     display: flex;
-    flex-grow: 1;
-    flex-direction: column;
+    flex-flow: column wrap !important;
+    justify-content: center;
   }
 
   .searchbars > ul {
@@ -620,6 +621,15 @@ textarea:focus {
   .searchbars > ul > li {
     font-size: 12px;
     text-align: left;
+  }
+
+  .restaurantpage {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+
+  .review {
+    position: relative;
   }
 }
 
@@ -639,7 +649,9 @@ textarea:focus {
   .eats {
     top: 45%;
   }
-
+  .stats > ul > li > button {
+    width: 70px;
+  }
   .place {
     line-height: 10px;
   }
@@ -799,6 +811,11 @@ textarea:focus {
 
   .restaurantpage {
     left: 0;
+  }
+
+  .stats {
+    position: absolute;
+    bottom: 0;
   }
 }
 
