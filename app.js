@@ -4,7 +4,6 @@ const calls = require("./calls");
 const app = express();
 const pgp = require('pg-promise')();
 const db = pgp(src.database) // Connection to Elephant SQL database   // Pg proimse
-require("./api-routes")(app);//sets the api
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
@@ -21,8 +20,10 @@ app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()) // parse application/json
 
-app.use(express.static(__dirname + 'public')); // Static Files
-app.use(express.static(__dirname + '/public')); // Static Files
+app.use(express.static(__dirname + '/styles')); // Static Files
+app.use(express.static(__dirname + '/styles/images')); // For loading image Files
+app.use(express.static(__dirname + 'templates')); // Static Files
+
 
 app.use(session({
     // Key that is kept secret that is going to encrypt all of the information
@@ -45,6 +46,7 @@ const setUser = async (req, res, next)=> {
     db.one(`SELECT * FROM users WHERE username = '${req.body.username.toLowerCase()}'`)
     .then(user=> {
         currentUser[0] = user  // Set user as current user
+        module.exports = user
         next()
     }).catch(err=>console.log('ERROR '+ err))    
 }
@@ -52,16 +54,18 @@ const setUser = async (req, res, next)=> {
 app.get('/', checkAuthenticated, (req, res) => {
     //res.render('index.ejs', { name: req.user.name, id: req.user.id })
     console.log('Loading Index')
-    res.sendFile(path.join(__dirname + '/public/profile.html'));
+
+    res.sendFile(path.join(__dirname + '/templates/profile.html'));
+
 })
   
 // Can't go to the login page if not authenticated
 app.get('/login',(req, res) => {
-    res.sendFile(path.join(__dirname + '/public/login.html'));
+    res.sendFile(path.join(__dirname + '/templates/login.html'));
 })
 
 app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/signup.html'));
+    res.sendFile(path.join(__dirname + '/templates/signup.html'));
     //res.sendfile('./main.html');
 })
 

@@ -13,11 +13,9 @@ let options = {
   maxRedirects: 20,
 };
 
-
 const loginCall = https.request(options, function (res) {
   let chunks = [];
   let choices =[];
-  
 
   res.on("data", function (chunk) {
     chunks.push(chunk);
@@ -79,6 +77,9 @@ const specifyCall = https.request(options, function (res) {
     let a = body.toString();
     let searchRet = JSON.parse(a)
     let newOpts = searchRet.businesses
+
+    let first = newOpts[0].id
+    console.log(first)
 
     console.log(searchRet)
     
