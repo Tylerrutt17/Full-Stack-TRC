@@ -563,7 +563,7 @@ textarea:focus {
   background-color: rgb(211, 211, 211);
 }
 
-@media all and (min-width: 320px) and (max-width: 425px) {
+@media (max-width: 425px) {
   .main {
     width: 100%;
   }
@@ -573,41 +573,68 @@ textarea:focus {
   .right {
     width: 100% !important;
   }
+  .right::-webkit-scrollbar {
+    width: 4px;
+  }
 
   #searchbar1 {
     left: 0;
     height: 30px;
-    font-size: 12px;
+    font-size: 10px;
+    width: 55%;
+    border-radius: 5px;
+  }
+
+  #searchbar2 {
+    display: none;
   }
 
   .submitsearch {
-    display:  !important;
-    margin-left: 0;
-    height: 
-    width: 1px !important;
+    width: 1px;
+    font-size: 1px;
+    background-color: transparent !important;
+    color: transparent !important;
   }
 
   .submitsearch > i {
-    font-size: 20px;
+    font-size: 15px;
+    position: absolute;
+    left: ;
     margin-left: -25px;
     color: rgb(255, 187, 0);
   }
+
+  .eats {
+    height: 50%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+
+  .searchbars > ul {
+    width: 100%;
+    display: block;
+    text-align: left;
+    margin: auto;
+  }
+
+  .searchbars > ul > li {
+    font-size: 12px;
+    text-align: left;
+  }
 }
 
-@media all and (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .left {
-    width: 40%;
+    width: 40% !important;
   }
 
   .personal {
     height: 50px;
   }
 
-  .personal > img {
-    height: 70%;
-  }
   .right {
-    width: 60%;
+    width: 60% !important;
   }
 
   .eats {
@@ -616,6 +643,10 @@ textarea:focus {
 
   .place {
     line-height: 10px;
+  }
+
+  .right::-webkit-scrollbar {
+    width: 10px;
   }
 
   .searchbars > ul {
@@ -638,6 +669,10 @@ textarea:focus {
 
   #searchbar2 {
     display: none;
+  }
+
+  .submitsearch {
+    margin-left: -15px;
   }
   .searchdiv {
     left: 0;
