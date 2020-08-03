@@ -59,7 +59,12 @@
               <a href=""><li>View</li></a>
               <a href=""><li>Lorem</li></a>
             </ul>
-            <button class="logout">Logout</button>
+            <div>
+              <form action="/logout?_method=DELETE" method="POST">
+                  <button class="login" type="submit">Logout</button>
+              </form>
+          </div>
+            <!-- <button class="logout">Logout</button> -->
           </div>
         </div>
         <div class="row intro">

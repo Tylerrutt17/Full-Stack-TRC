@@ -3,7 +3,7 @@ const express = require("express");
 const calls = require("./calls");
 const app = express();
 const pgp = require('pg-promise')();
-const db = pgp(src.dbConn)
+const db = pgp(src.database) // Connection to Elephant SQL database   // Pg proimse
 require("./api-routes")(app);//sets the api
 const flash = require('express-flash')
 const session = require('express-session')
@@ -11,14 +11,9 @@ const methodOverride = require('method-override')
 var path = require('path');
 var bodyParser = require('body-parser') 
 var dbfunctions = require('./dbFunctions/dbfunctions.js')
-const bcrypt = require('bcrypt')
-const es6Renderer = require('express-es6-template-engine');
-
-const db = require('./config').database // Connection to Elephant SQL database   // Pg proimse
 
 // User instance if logged in
 var currentUser = [];
-let user = currentUser[0];
 
 app.use(flash())
 app.use(express.static("dbFunctions"));
@@ -39,7 +34,7 @@ app.use(session({
 
 // Uses the dbfunctions
 const attemptLogin = (req, res, next) => {
-    dbfunctions.attemptLogin(db, req.body.username, req.body.password, next, res)
+    dbfunctions.attemptLogin(db, req.body.username, req.body.password, next)
 }
 // Uses the dbfunctions
 const addUser = (req, res, next) => {
@@ -49,25 +44,20 @@ const addUser = (req, res, next) => {
 const setUser = async (req, res, next)=> {
     db.one(`SELECT * FROM users WHERE username = '${req.body.username.toLowerCase()}'`)
     .then(user=> {
-        currentUser[0] = user // Set user as current user
+        currentUser[0] = user  // Set user as current user
         next()
-    })
-    .catch(err=>console.log('ERROR '+ err))    
+    }).catch(err=>console.log('ERROR '+ err))    
 }
 
 app.get('/', checkAuthenticated, (req, res) => {
     //res.render('index.ejs', { name: req.user.name, id: req.user.id })
     console.log('Loading Index')
-    res.sendFile(path.join(__dirname + '/public/home.html'));
+    res.sendFile(path.join(__dirname + '/public/profile.html'));
 })
   
 // Can't go to the login page if not authenticated
 app.get('/login',(req, res) => {
     res.sendFile(path.join(__dirname + '/public/login.html'));
-})
-
-app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
-    res.redirect('/')
 })
 
 app.get('/register', (req, res) => {
@@ -78,6 +68,10 @@ app.get('/register', (req, res) => {
 app.post('/registernewuser', addUser, async (req, res) => {
     // Name is used in the initiation of fields in each view, ID of sorts
     res.redirect('/login')
+})
+
+app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
+    res.redirect('/')
 })
 
 app.delete('/logout', (req, res) => {
@@ -101,5 +95,5 @@ app.listen(port, ()=>{
     console.log(`listening on http://localhost:${port}`)
 })
 
-
-module.exports = user
+console.log("USER: ", currentUser)
+//module.exports = user
