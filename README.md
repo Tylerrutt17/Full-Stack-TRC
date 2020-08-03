@@ -1,21 +1,31 @@
-# Getting started
+# Full_Stack_TRC
 
-# Tyler, Rashad, and Christian
+## CREATORS
+### Tyler Rytt
+### Rashad Collins
+### Christian Alston
 
-Team leader clone then do :
+## RUNNING THE PROJECT
+* How to run the project.
+* Open a new terminal
+* git clone ''
+* 'cd front_end_project/login'
+* make sure to install all of the node modules inside the Package.json file.
+* 'npm run devStart' // To Start the Server
+* Open up http://localhost:8000/ in your browser
 
-`rm -rf Full-Stack-Starter/.git`
+## USED Technologies/API's
+* Uses Leaflet APi To load the map
+* Uses node.js and express for the login and register components
 
-`mv Full-Stack-Starter Whatever_name_you want`
+## OVERVIEW
+* Upon opening of the page, user can login to the website or register a new account
+* User can login with a created account to access the main page.
+* Upon entering the main page, a logout button is at the top right corner
+# -Main page-
+* includes navigation bar with multiple options
+* User is welcomed with 'Hi + name" on the left side of the navigation bar
+* includes hero image and dummy text.
+* includes map of U.S with hover functionality to display results per state.
+* includes flashy news display and header with a few sample articles. Also includes a nav bar for selecting specific news topics.
 
-`cd The_Folder_name_you_chose`
-
-`npm init \\put in your details`
-
-`npm install express`
-
-`npm install pg-promise`
-
-Create Repository in github without a readme and follow the instructions given on that page.
-
-Add The team as collaborators
