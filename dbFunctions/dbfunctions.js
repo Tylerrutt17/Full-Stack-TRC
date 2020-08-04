@@ -17,7 +17,6 @@ const uploadNewUser = async (db, name, email, username, favorite_foods, zipcode,
 //uploadNewUser(db, 'test name', 'testuser1', 'grass, flowers', '30243', '123456', callback)
 
 // Based on a users username you can load that specific users information
-<<<<<<< HEAD
 const loadUser = (db, username, callback) => {
     console.log("Loading User NOw!!")
     db.one(`SELECT * FROM users WHERE username = '${username.toLowerCase()}'`)
@@ -25,24 +24,13 @@ const loadUser = (db, username, callback) => {
         console.log(`loaded user ${user.name}`)
         callback(user)
         return
-=======
-const loadUser = async (db, username, callback) => {
-    db.one(`SELECT * FROM users WHERE username = '${username.toLowerCase()}'`)
-    .then(user =>{
-        console.log(`loaded user ${user.name}`)
-        return user
->>>>>>> 5b4ecf0ef42cd608b598e94ddd9bf0fd96fae919
     })
     .catch(err=>console.log("Error finding that user...", err))
 }
 
 const attemptLogin = async (db, username, password, callback)=> {
-<<<<<<< HEAD
     console.log("To Lowercase "+username.toLowerCase(), password)
     db.one(`SELECT * FROM users WHERE username = '${username.toLowerCase()}'`)
-=======
-    db.one(`SELECT * FROM users WHERE username='${username.toLowerCase()}'`)
->>>>>>> 5b4ecf0ef42cd608b598e94ddd9bf0fd96fae919
     .then((user)=> {
         console.log(user.favorite_foods)
         // compares the users entered password to the password to the user in the database if a user with that username exists
@@ -51,7 +39,6 @@ const attemptLogin = async (db, username, password, callback)=> {
             if (isMatch === true) {
               console.log("Correct PASSWORD! "+ user.name)
               callback()
-<<<<<<< HEAD
               //return
             } else {
               console.log("Wrong Passcode")
@@ -60,17 +47,6 @@ const attemptLogin = async (db, username, password, callback)=> {
         }) 
     })
     .catch(err=>console.log("Error finding user with that username "+err))
-=======
-            } else {
-              console.log("Wrong Passcode")
-            }
-        }) 
-    })
-    .catch(err=> {
-        console.log("Error finding user with that username "+err)
-        
-    })
->>>>>>> 5b4ecf0ef42cd608b598e94ddd9bf0fd96fae919
 }
 
 
