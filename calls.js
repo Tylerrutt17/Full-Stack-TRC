@@ -34,7 +34,7 @@ var requestOptions = {
 };
 
 const fetchBusinesses = (foodtype, callback) => {
-  fetch(`https://api.yelp.com/v3/businesses/search?location=30269&term=${foodtype}&categories=food&limit=1`, requestOptions)
+  fetch(`https://api.yelp.com/v3/businesses/search?location=30269&term=${foodtype}&categories=food&limit=3`, requestOptions)
   .then(data => data.json())
   .then(result => {
     callback(result)
