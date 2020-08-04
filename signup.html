@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sign Up</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -20,7 +20,7 @@
       rel="stylesheet"
       href="//use.fontawesome.com/releases/v5.0.7/css/all.css"
     />
-    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="/css/signup.css" />
   </head>
   <body>
     <div class="main">
@@ -38,7 +38,7 @@
             <li><i class="fab fa-facebook"></i></li>
           </a>
         </ul>
-        <form action="">
+        <form action="/registernewuser" method="POST">
           <label for="fullname">Full Name</label>
           <br />
           <input type="text" name="fullname" id="fullname" />
@@ -62,9 +62,10 @@
           <label for="foods">What do you like to eat?</label>
           <br />
           <input type="text" name="foods" id="foods" />
+          <button class="signupbutton" type="submit" id="signupbtn">
+            Create Account
+          </button>
         </form>
-        <button class="signupbutton">Create Account</button>
-
         <a href="login.html">Back to login</a>
       </div>
     </div>

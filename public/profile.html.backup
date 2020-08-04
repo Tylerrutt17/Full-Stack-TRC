@@ -104,7 +104,7 @@
                 name="searchbar2"
                 id="searchbar2"
               />
-              <button type="submit" class="submitsearch">
+              <button id="search" type="submit" class="submitsearch">
                 <i class="fas fa-search"></i>
               </button>
             </form>

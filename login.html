@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Login</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -20,7 +20,7 @@
       rel="stylesheet"
       href="//use.fontawesome.com/releases/v5.0.7/css/all.css"
     />
-    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="/css/login.css" />
   </head>
 
   <body id="body">
@@ -39,7 +39,7 @@
             <li><i class="fab fa-facebook"></i></li>
           </a>
         </ul>
-        <form action="">
+        <form onsubmit="return false">
           <label for="username">Username</label>
           <br />
           <input type="text" name="username" id="username" />
@@ -47,13 +47,37 @@
           <label for="password">Password</label>
           <br />
           <input type="password" name="password" id="password" />
-          <button class="loginbutton">Login</button>
+          <button type="button" class="loginbutton">Login</button>
         </form>
         <button class="signup">
-          <a href="signup.html">Not a user? Sign up here</a>
+          <a href="/register">Not a user? Sign up here</a>
         </button>
-        <a href="index.html">Back to main</a>
+        <a href="/">Back to main</a>
       </div>
     </div>
+    <script>
+    
+    document.querySelector('.loginbutton').addEventListener('click', (evt)=> {
+      let password = document.getElementById('password').value 
+      let username = document.getElementById('username').value 
+      console.log(password, username)
+
+      fetch('/attemptlogin', {
+          method:'POST',
+          headers: {
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({password:password, username:username})
+          
+      })
+      .then(data=>data.json())
+      .then(user=>{
+          localStorage.setItem('username', user.username)
+          window.location = "/"
+      })
+
+    })
+    
+    </script>
   </body>
 </html>
