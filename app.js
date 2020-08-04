@@ -74,6 +74,10 @@ app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
     res.send(res.user)
 })
 
+app.get('/savepreference/:type/:id', (res, req)=> {
+    console.log(localStorage.getItem('username'))
+})
+
 app.get('/me/:username', (req, res)=> {
     //calls.
     dbfunctions.loadUser(db, req.params.username, (user)=> {

@@ -49,6 +49,15 @@ const attemptLogin = async (db, username, password, callback)=> {
     .catch(err=>console.log("Error finding user with that username "+err))
 }
 
+const savePreference = (db, foodType, restaurantId) => {
+    console.log("Loading User NOw!!")
+    // db.none(`INSERT INTO user_preferences (UserId, Food_Category, Restaurant_Id) VALUES ('${foodType}', '${restaurantId}'`)
+    // .then((log)=>{
+    //     console.log("Successfully created and instantiated user into the DB! "+log)
+    //     callback()
+    // })
+}
+
 
 //attemptLogin(db, 'testuser', '123456')
 

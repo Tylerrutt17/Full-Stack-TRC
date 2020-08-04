@@ -89,6 +89,16 @@ const setupView = (results) => {
 
 }
 
+var bookmarkbtn = document.querySelector('#bookmarkbtn')
+bookmarkbtn.onclick = function() {
+  selectedBusiness[0]
+  console.log("pressed")
+  bookmarkbtn.setAttribute('method', 'post');
+  bookmarkbtn.setAttribute('action', `/savepreference/${selectedBusiness.categories[0].alias}/${selectedBusiness.id}`);
+  bookmarkbtn.style.display = 'hidden';
+  bookmarkbtn.submit()
+}
+
 function clickedOnRestaurant(id, results) {
 
   let business = results.businesses[id]
