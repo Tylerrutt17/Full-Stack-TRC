@@ -28,11 +28,18 @@ const fetchBusinesses = (foodtype, callback) => {
     .catch((error) => console.log("error", error));
 };
 
-
-let choices = [];
-
-
 module.exports = {
   fetchBusinesses: fetchBusinesses,
 };
 
+const searchBusinesses = (foodtype, callback) => {
+  fetch(
+    `https://api.yelp.com/v3/businesses/search?location=30269&term=${foodtype}&categories=food&limit=3`,
+    requestOptions
+  )
+    .then((data) => data.json())
+    .then((result) => {
+      callback(result);
+    })
+    .catch((error) => console.log("error", error));
+};
