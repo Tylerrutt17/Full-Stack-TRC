@@ -5,7 +5,6 @@ const pgp = require("pg-promise")();
 const curUser = require("./app.js");
 const fetch = require("node-fetch");
 
-var raw = "";
 
 var requestOptions = {
   method: "GET",
@@ -17,20 +16,19 @@ var requestOptions = {
 };
 
 const fetchBusinesses = (foodtype, callback) => {
-  fetch(
-    `https://api.yelp.com/v3/businesses/search?location=30269&term=${foodtype}&categories=food&limit=3`,
-    requestOptions
-  )
-    .then((data) => data.json())
-    .then((result) => {
-      callback(result);
-    })
-    .catch((error) => console.log("error", error));
-};
+
+  fetch(`https://api.yelp.com/v3/businesses/search?location=30269&term=${foodtype}&categories=food&limit=3`, requestOptions)
+  .then(data => data.json())
+  .then(result => {
+    callback(result)
+  })
+  .catch(error => console.log('error', error));
+}
 
 module.exports = {
-  fetchBusinesses: fetchBusinesses,
-};
+  fetchBusinesses:fetchBusinesses
+}
+
 
 const searchBusinesses = (foodtype, callback) => {
   fetch(
