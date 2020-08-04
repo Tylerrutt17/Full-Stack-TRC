@@ -1,3 +1,6 @@
+// When a business is selected, the object is appended into here
+var selectedBusiness = []
+
 const start = (user) => {
 
   console.log(user)
@@ -37,8 +40,6 @@ const start = (user) => {
   
 }
 
-console.log("FAVORITE FOODd", localStorage.getItem('favorite_foods'))
-
 fetch(`/me/${localStorage.getItem('username')}`)
 .then(data=>data.json())
 .then(user=>start(user));
@@ -50,10 +51,11 @@ fetch(`/fetchrestaurants/${localStorageFood}`)
 .then(results=>setupView(results))
 
 const setupView = (results) => {
-
-  // Do this automatically in the future
   
+  // Do this automatically in the future
+
   let business1 = results.businesses[0]
+  console.log(business1)
   var title1 = GetElementInsideContainer("rest1", "rest1title");
   var img1 = GetElementInsideContainer("rest1", "rest1img");
   var price1 = GetElementInsideContainer("rest1", "rest1price");
@@ -76,10 +78,37 @@ const setupView = (results) => {
   title3.innerText = business3.name
   price3.innerText = `Price Range: ${business3.price}`
   img3.setAttribute('src', `${business3.image_url}`);
-  
+
+  // Set the on click for each restaurant.
+  var div1 = document.getElementById("rest1"); //grab the element
+  div1.onclick = function() {clickedOnRestaurant(0, results)}
+  var div2 = document.getElementById("rest2"); //grab the element
+  div2.onclick = function() {clickedOnRestaurant(1, results)}
+  var div3 = document.getElementById("rest3"); //grab the element
+  div3.onclick = function() {clickedOnRestaurant(2, results)}
 
 }
 
+function clickedOnRestaurant(id, results) {
+
+  let business = results.businesses[id]
+  selectedBusiness[0] = business
+
+  var viewOnYelpBtn = document.querySelector('#yelpviewbtn')
+  viewOnYelpBtn.href = `${business.url}`
+
+  var title = document.querySelector('#restaurantname')
+  var type = document.querySelector('#restauranttype')
+  var price = document.querySelector('#restaurantprice')
+  var location = document.querySelector('#restauranthours')
+
+  title.innerText = business.name
+  type.innerText = `Restaurant type: ${business.categories[0].alias}`
+  location.innerText = `${business.location.display_address}`
+  price.innerText = `price: ${business.price}`
+
+  title.scrollIntoView()
+}
 
 function GetElementInsideContainer(containerID, childID) {
   var elm = {};
