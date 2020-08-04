@@ -57,11 +57,12 @@ textarea:focus {
   border: 1px solid white;
   position: absolute;
   bottom: -40%;
+  display: flex;
+  justify-content: center;
 }
 
-.profilepic>img {
-  height: 100%;
-  width: 100%;
+.profilepic>.initials {
+  margin: auto;
 }
 
 .left {
@@ -107,8 +108,7 @@ textarea:focus {
 
 .personal>ul>a {
   text-decoration: none;
-  font-size: 20px;
-  font-size: min(max(12px, 4vw), 20px);
+  font-size: min(max(12px, 4vw), 15px);
 }
 
 .personal>ul>a>li {
@@ -201,14 +201,33 @@ textarea:focus {
   text-transform: uppercase;
 }
 
+
+@keyframes goDown {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    bottom: 0%;
+  }
+}
+
+.right>i {
+  position: absolute;
+  bottom: 10px;
+  left: 40px;
+  font-size: min(max(16px, 5vw), 30px);
+}
+
 .right>.searchdiv {
   height: 60%;
   width: 100%;
-  bottom: -800px;
   text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  position: absolute;
   background-color: rgb(0, 0, 0);
 }
 
@@ -216,8 +235,8 @@ textarea:focus {
   margin: auto;
   position: absolute;
   top: 30%;
-  width: 100%;
   text-align: center;
+  width: 90%;
 }
 
 .searchbars>h1 {
@@ -226,23 +245,21 @@ textarea:focus {
   margin-bottom: 10px;
 }
 
+.searchbars>form {
+  width: 100%;
+}
+
 .searchbars>form>input {
-  height: 40px;
-  width: 35%;
   border-radius: 5px;
   margin: 0 7px;
   border: none;
   padding-left: 10px;
-  font-size: 17px;
 }
 
 .searchbars>form>.submitsearch {
   background-color: rgba(255, 187, 0, 1);
   color: white;
   font-weight: bold;
-  font-size: 15px;
-  height: 41px;
-  width: 100px;
   border: none;
   border-radius: 5px;
   padding-top: 5px;
@@ -250,7 +267,7 @@ textarea:focus {
 }
 
 .searchbars>form>.submitsearch>i {
-  padding-left: 2px;
+  padding-left: 18px;
 }
 
 .searchbars>ul {
@@ -262,14 +279,14 @@ textarea:focus {
 
 .searchbars>ul>li {
   color: white;
-  margin: 10px 20px;
+  font-size: min(max(16px, 5vw), 20px);
+  margin: 5px 20px;
 }
 
 .right>.intro {
   height: 20%;
   width: 100%;
   position: absolute;
-  top: 25%;
 }
 
 .intro>h1 {
@@ -287,18 +304,17 @@ textarea:focus {
 }
 
 .eats {
-  height: 40%;
   width: 100%;
   position: absolute;
   bottom: 5%;
   display: flex;
   justify-content: space-between;
+  overflow-y: scroll;
 }
 
 .eats>.place {
-  height: 90%;
+  height: 100%;
   text-align: center;
-  line-height: 20px;
   box-shadow: rgb(161, 161, 161) 5px 8px 10px;
 }
 
@@ -309,7 +325,7 @@ textarea:focus {
 
 .place>img {
   height: 70%;
-  width: 100%;
+  width: 90%;
 }
 
 .place>h3 {
@@ -323,19 +339,19 @@ textarea:focus {
 }
 
 .restaurantpage {
-  height: 110vh;
+  height: 90vh;
   width: 100%;
   position: absolute;
-  bottom: -1700px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  overflow-y: scroll;
 }
 
 .restaurantpage>.searchresults {
   background-color: rgb(255, 187, 0);
-  height: 40%;
+  height: 30%;
   width: 100%;
-  overflow-x: scroll;
+
 }
 
 .restaurantpage>.stats {
@@ -348,23 +364,23 @@ textarea:focus {
 }
 
 .stats>h1 {
-  font-size: min(max(10px, 4vw), 50px);
+  font-size: min(max(22px, 4vw), 50px);
 }
 
 .stats>p {
   color: rgba(255, 187, 0, 1);
-  font-size: min(max(10px, 4vw), 15px);
+  font-size: min(max(16px, 4vw), 19px);
 }
 
 .stats>h3 {
   color: rgb(78, 78, 78);
 
-  font-size: min(max(10px, 4vw), 15px);
+  font-size: min(max(13px, 4vw), 15px);
 }
 
 .stats>h2 {
   color: rgb(49, 49, 49);
-  font-size: min(max(10px, 4vw), 19px);
+  font-size: min(max(15px, 4vw), 19px);
 }
 
 .stats>ul {
@@ -373,12 +389,10 @@ textarea:focus {
 }
 
 .stats>ul>li {
-  margin: 0 10px;
+  margin-right: 10px;
 }
 
 .stats>ul>li>button {
-  height: 40px;
-  width: 100%;
   padding: 10px;
   font-size: min(max(10px, 7vw), 20px);
   border-radius: 5px;
@@ -553,6 +567,17 @@ textarea:focus {
   background-color: rgb(211, 211, 211);
 }
 
+@keyframes go {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    left: 30%;
+  }
+}
+
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .main {
     width: 100%;
@@ -571,6 +596,17 @@ textarea:focus {
     width: 4px;
   }
 
+  .right>i {
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+    font-size: min(max(16px, 5vw), 30px);
+    animation-name: go;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: normal forwards;
+  }
+
   .nav {
     border: none;
   }
@@ -584,11 +620,19 @@ textarea:focus {
     width: 100px;
   }
 
+  .intro {
+    top: 100px;
+  }
+
+  .intro>h1 {
+    font-size: 25px;
+  }
+
   #searchbar1 {
     left: 0;
     height: 30px;
     font-size: 10px;
-    width: 55%;
+    width: 85%;
     border-radius: 5px;
   }
 
@@ -597,10 +641,9 @@ textarea:focus {
   }
 
   .submitsearch {
-    width: 1px;
-    font-size: 1px;
-    background-color: transparent !important;
-    color: transparent !important;
+    height: 30px;
+    margin-top: 10px;
+    font-size: 12px;
   }
 
   .submitsearch>i {
@@ -612,10 +655,11 @@ textarea:focus {
 
   .searchdiv {
     width: 100%;
+    bottom: -100px;
   }
 
   .eats {
-    height: 60%;
+    height: 40%;
     width: 100%;
     display: flex;
     flex-flow: column wrap !important;
@@ -635,10 +679,12 @@ textarea:focus {
   }
 
   .stats>ul>li>button {
-    margin: 10px;
+    width: 50px;
+
   }
 
   .restaurantpage {
+    bottom: -1200px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }
@@ -649,32 +695,96 @@ textarea:focus {
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .left {
-    width: 40% !important;
+  .right>i {
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+    font-size: min(max(16px, 5vw), 30px);
+    animation-name: go;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: normal forwards;
   }
 
-  .personal {
-    height: 50px;
+  .main {
+    width: 100%;
+  }
+
+  .left {
+    width: 32%;
   }
 
   .right {
-    width: 60% !important;
-  }
-
-  .eats {
-    top: 45%;
-  }
-
-  .stats>ul>li>button {
-    width: 70px;
-  }
-
-  .place {
-    line-height: 10px;
+    width: 68% !important;
+    border: none;
   }
 
   .right::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
+  }
+
+
+  .nav {
+    border: none;
+  }
+
+  .navitems>ul {
+    display: none;
+  }
+
+  .logout {
+    height: 30px;
+    width: 100px;
+  }
+
+  .intro {
+    top: 100px;
+  }
+
+  .intro>h1 {
+    font-size: 25px;
+  }
+
+  #searchbar1 {
+    left: 0;
+    height: 37px;
+    font-size: 15px;
+    width: 85%;
+    border-radius: 5px;
+  }
+
+  #searchbar2 {
+    display: none;
+  }
+
+  .submitsearch {
+    height: 30px;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .submitsearch>i {
+    font-size: 15px;
+    position: absolute;
+    margin-left: -25px;
+    color: rgb(255, 187, 0);
+  }
+
+  .searchdiv {
+    width: 100%;
+    bottom: -100px;
+  }
+
+  .eats {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap !important;
+    justify-content: center;
+  }
+
+  .place {
+    width: 50%;
   }
 
   .searchbars>ul {
@@ -689,10 +799,82 @@ textarea:focus {
     text-align: left;
   }
 
+  .stats>ul>li>button {
+    width: 100px;
+
+  }
+
+  .restaurantpage {
+    bottom: -1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+
+  .review {
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width:1440px) {
+  .right>i {
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+    font-size: min(max(16px, 5vw), 30px);
+    animation-name: go;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: normal forwards;
+  }
+
+  .main {
+    width: 100%;
+  }
+
+  .left {
+    width: 32%;
+  }
+
+  .profilepic>.initials {
+    font-size: 30px;
+  }
+
+  .right {
+    width: 68% !important;
+    border: none;
+  }
+
+  .right::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .nav {
+    border: none;
+  }
+
+  .navitems>ul {
+    display: none;
+  }
+
+  .logout {
+    height: 30px;
+    width: 100px;
+  }
+
+  .intro {
+    top: 100px;
+  }
+
+  .intro>h1 {
+    font-size: 25px;
+  }
+
   #searchbar1 {
-    width: 70%;
     left: 0;
-    margin: auto;
+    height: 37px;
+    font-size: 15px;
+    width: 85%;
+    border-radius: 5px;
   }
 
   #searchbar2 {
@@ -700,95 +882,61 @@ textarea:focus {
   }
 
   .submitsearch {
-    margin-left: -15px;
+    height: 30px;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .submitsearch>i {
+    font-size: 15px;
+    position: absolute;
+    margin-left: -25px;
+    color: rgb(255, 187, 0);
   }
 
   .searchdiv {
-    left: 0;
-    top: 10%;
-    height: 10%;
-  }
-
-  .restaurantpage {
-    bottom: -2000px;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .main {
-    width: 90%;
-    height: 90vh;
-    top: 40px;
-  }
-
-  .left {
-    width: 30%;
-  }
-
-  .right {
-    padding: 0;
-    width: 70%;
-  }
-
-  .profilepic {
-    height: 50%;
-    width: 80%;
-  }
-
-  .profilepic>img {
-    height: 100%;
     width: 100%;
-  }
-
-  .personal>ul {
-    height: 40%;
-  }
-
-  .personal>ul>a {
-    margin: 0px;
-    height: 10px;
-  }
-
-  .personal>.follow {
-    bottom: 8%;
-  }
-
-  .searchdiv {
-    height: 5%;
-    width: 100%;
-    left: 0;
-    top: 30%;
+    bottom: -100px;
   }
 
   .eats {
-    top: 100%;
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap !important;
+    justify-content: center;
   }
 
   .place {
-    margin-top: 25px;
-    padding: 10px 0;
-  }
-
-  .restaurantpage {
-    left: 0;
-  }
-
-  .searchbars>form>input {
-    height: 40px;
-    margin: 0 -7px;
+    width: 50%;
+    line-height: 10px;
   }
 
   .searchbars>ul {
-    left: 0;
-    font-size: 14px;
+    width: 100%;
+    display: block;
+    text-align: left;
+    margin: auto;
   }
 
   .searchbars>ul>li {
-    margin: 5px 12px;
+    font-size: 12px;
+    text-align: left;
   }
 
-  .submitsearch {
-    height: 30px;
+  .stats>ul>li>button {
+    width: 100px;
+
+  }
+
+  .restaurantpage {
+    bottom: -1100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+
+  .review {
+    position: relative;
   }
 }
 
