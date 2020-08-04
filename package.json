@@ -28,6 +28,7 @@
     "flash": "^1.1.0",
     "method-override": "^3.0.0",
     "node": "^14.5.0",
+    "node-fetch": "^2.6.0",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

@@ -17,12 +17,13 @@ const uploadNewUser = async (db, name, email, username, favorite_foods, zipcode,
 //uploadNewUser(db, 'test name', 'testuser1', 'grass, flowers', '30243', '123456', callback)
 
 // Based on a users username you can load that specific users information
-const loadUser = async (db, username, callback) => {
+const loadUser = (db, username, callback) => {
     console.log("Loading User NOw!!")
     db.one(`SELECT * FROM users WHERE username = '${username.toLowerCase()}'`)
     .then(user =>{
         console.log(`loaded user ${user.name}`)
-        return user
+        callback(user)
+        return
     })
     .catch(err=>console.log("Error finding that user...", err))
 }
@@ -46,7 +47,6 @@ const attemptLogin = async (db, username, password, callback)=> {
         }) 
     })
     .catch(err=>console.log("Error finding user with that username "+err))
-    
 }
 
 
