@@ -1,16 +1,7 @@
 const bcrypt = require("bcrypt");
 const pgp = require("pg-promise")();
 
-const uploadNewUser = async (
-  db,
-  name,
-  email,
-  username,
-  favorite_foods,
-  zipcode,
-  rawpassword,
-  callback
-) => {
+const uploadNewUser = async (db,name,email,username,favorite_foods,zipcode,rawpassword,callback) => {
   // Hashes the raw password using bcrypt.
   const hashedPassword = await bcrypt.hash(rawpassword, 10);
 
@@ -23,9 +14,7 @@ const uploadNewUser = async (
     );
     callback();
   });
-
 };
-
 
 // Based on a users username you can load that specific users information
 const loadUser = (db, username, callback) => {
@@ -39,19 +28,20 @@ const loadUser = (db, username, callback) => {
     .catch((err) => console.log("Error finding that user...", err));
 };
 
-const savePreference = (db, foodType, restaurantId) => {
-    console.log("Loading User NOw!!")
-    // db.none(`INSERT INTO user_preferences (UserId, Food_Category, Restaurant_Id) VALUES ('${foodType}', '${restaurantId}'`)
-    // .then((log)=>{
-    //     console.log("Successfully created and instantiated user into the DB! "+log)
-    //     callback()
-    // })
+const savePreference = (db, foodType, restaurantId, userId) => {
+    console.log("Saving Preferences Now", foodType, restaurantId, userId)
+    db.none(`INSERT INTO user_preferences (userid, food_category, restaurant_id) VALUES ('${userId}', '${foodType}', '${restaurantId}')`)
+    .then((log)=>{
+        console.log("Successfully added a user preference "+log)
+        
+        //callback()
+    })
 }
 
 const attemptLogin = async (db, username, password, callback) => {
   console.log("To Lowercase " + username.toLowerCase(), password);
   db.one(`SELECT * FROM users WHERE username = '${username.toLowerCase()}'`)
-    .then((user) => {
+    .then((user) => { 
       console.log(user.favorite_foods);
       // compares the users entered password to the password to the user in the database if a user with that username exists
       bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -76,4 +66,5 @@ module.exports = {
   uploadNewUser,
   loadUser,
   attemptLogin,
+  savePreference,
 };

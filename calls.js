@@ -15,8 +15,8 @@ var requestOptions = {
   redirect: "follow",
 };
 
-const fetchBusinesses = (foodtype, callback) => {
-
+const fetchBusinesses = (callback) => {
+  var foodtype = "burger"
   fetch(`https://api.yelp.com/v3/businesses/search?location=30269&term=${foodtype}&categories=food&limit=3`, requestOptions)
   .then(data => data.json())
   .then(result => {
