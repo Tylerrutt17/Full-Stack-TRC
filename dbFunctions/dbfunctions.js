@@ -39,6 +39,15 @@ const loadUser = (db, username, callback) => {
     .catch((err) => console.log("Error finding that user...", err));
 };
 
+const savePreference = (db, foodType, restaurantId) => {
+    console.log("Loading User NOw!!")
+    // db.none(`INSERT INTO user_preferences (UserId, Food_Category, Restaurant_Id) VALUES ('${foodType}', '${restaurantId}'`)
+    // .then((log)=>{
+    //     console.log("Successfully created and instantiated user into the DB! "+log)
+    //     callback()
+    // })
+}
+
 const attemptLogin = async (db, username, password, callback) => {
   console.log("To Lowercase " + username.toLowerCase(), password);
   db.one(`SELECT * FROM users WHERE username = '${username.toLowerCase()}'`)

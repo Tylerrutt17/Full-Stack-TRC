@@ -39,16 +39,51 @@ const attemptLogin = (req, res, next) => {
 
 // Uses the dbfunctions
 const addUser = (req, res, next) => {
-  dbfunctions.uploadNewUser(
-    db,
-    req.body.fullname,
-    req.body.email,
-    req.body.username,
-    req.body.foods,
-    req.body.zipcode,
-    req.body.password,
-    next
-  );
+    dbfunctions.uploadNewUser(db, req.body.fullname, req.body.email, req.body.username, req.body.foods, req.body.zipcode, req.body.password, next)
+}
+
+const setUser = async (req, res, next)=> {
+    db.one(`SELECT * FROM users WHERE username = '${req.body.username.toLowerCase()}'`)
+    .then(user=> {
+        res.user = user
+        next()
+    }).catch(err=>console.log('ERROR '+ err))    
+}
+
+app.get('/', checkAuthenticated, (req, res) => {
+    //res.render('index.ejs', { name: req.user.name, id: req.user.id })
+    console.log('Loading Index')
+    res.sendFile(path.join(__dirname + '/profile.html'));
+})
+  
+// Can't go to the login page if not authenticated
+app.get('/login',(req, res) => {
+    res.sendFile(path.join(__dirname + '/login.html'));
+})
+
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname + '/signup.html'));
+    //res.sendfile('./main.html');
+})
+
+app.post('/registernewuser', addUser, async (req, res) => {
+    // Name is used in the initiation of fields in each view, ID of sorts
+    res.redirect('/login')
+})
+
+app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
+    console.log(res.user)
+    res.send(res.user)
+})
+
+app.get('/savepreference/:type/:id', (res, req)=> {
+    console.log(localStorage.getItem('username'))
+})
+
+app.get('/me/:username', (req, res)=> {
+    //calls.
+    dbfunctions.loadUser(db, req.params.username, (user)=> {
+        res.send(user)
 };
 
 const setUser = async (req, res, next) => {
