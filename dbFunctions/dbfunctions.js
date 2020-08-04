@@ -37,6 +37,18 @@ const savePreference = (db, foodType, restaurantId, userId) => {
         //callback()
     })
 }
+const checkPreferenceState = (db, restaurantId) => {
+  db.one(`SELECT * FROM user WHERE restaurant_id = '${restaurantId}'`)
+  .then((checkmark) => {
+    console.log(`loaded bookmark ${checkmark.userid}`);
+    callback(true);
+    return;
+  })
+  .catch((err) => {
+    callback(false);
+    return;
+  });
+}
 
 const attemptLogin = async (db, username, password, callback) => {
   console.log("To Lowercase " + username.toLowerCase(), password);

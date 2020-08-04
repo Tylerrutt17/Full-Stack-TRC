@@ -106,7 +106,12 @@ bookmarkbtn.onclick = function() {
 
 }
 
+const setupBookmark = (status) => {
+    console.log("Status", status)
+}
+
 function clickedOnRestaurant(id, results) {
+
 
   let business = results.businesses[id]
   selectedBusiness = []
@@ -127,8 +132,8 @@ function clickedOnRestaurant(id, results) {
   price.innerText = `price: ${business.price}`
 
   title.scrollIntoView()
-}
 
+}
 
 function GetElementInsideContainer(containerID, childID) {
   var elm = {};
