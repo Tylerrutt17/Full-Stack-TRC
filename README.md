@@ -1,21 +1,28 @@
-# Getting started
+# Full_Stack_TRC
 
-# Tyler, Rashad, and Christian
+## CREATORS
+### Tyler Rutt
+### Rashad Collins
+### Christian Alston
 
-Team leader clone then do :
+## RUNNING THE PROJECT LOCALLY
+* How to run the project.
+* Open a new terminal
+* git clone 'https://github.com/Tylerrutt17/Full-Stack-TRC'
+* cd into the project.
+* make sure to install all of the node modules inside the Package.json file with 'npm install'
+* 'npm start' // To Start the Server
+* Open up http://localhost:5000/ in your browser
 
-`rm -rf Full-Stack-Starter/.git`
+## Run using link - not done yet.
 
-`mv Full-Stack-Starter Whatever_name_you want`
+## USED Technologies/API's
+*
 
-`cd The_Folder_name_you_chose`
+## OVERVIEW
+* Upon opening of the page, user can login to the website or register a new account
+* User can login with a created account to access their profile page.
+* Logout button is available inside
+# -Main page-
+* 
 
-`npm init \\put in your details`
-
-`npm install express`
-
-`npm install pg-promise`
-
-Create Repository in github without a readme and follow the instructions given on that page.
-
-Add The team as collaborators
