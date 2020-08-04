@@ -160,9 +160,12 @@
                 </button>
               </li>
               <li>
-                <button id="bookmarkbtn" method="POST">
-                  <i class="far fa-bookmark"></i> Save
-                </button>
+                  <form id="bookmarkbtnform" action="/" method="GET">
+                    <button type="submit" id="bookmarkbtn">
+                        <i class="far fa-bookmark"></i> Save
+                      </button>
+                </form>
+                
               </li>
               <li>
                 <button type="submit" class="submitpicture">
@@ -237,25 +240,4 @@
     <!-- <script type="text/javascript" src="/profile.js"></script> -->
   </body>
   <script src="/profile.js" type="module"></script>
-  <script>
-    // Initialize and add the map
-    function initMap() {
-      // The location of uluru
-      var uluru = { lat: 32.1656, lng: 82.9001 };
-      // The map, centered at uluru
-      var map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 4,
-        center: uluru,
-      });
-      // The marker, positioned at uluru
-      var marker = new google.maps.Marker({ position: uluru, map: map });
-      var map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 8,
-      });
-    }
-  </script>
-  <script
-    defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7o99LcSnY93zc2g7r28JLZCv6BoIFOwk&callback=initMap"
-  ></script>
 </html>

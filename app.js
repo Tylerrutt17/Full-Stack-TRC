@@ -74,8 +74,10 @@ app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
     res.send(res.user)
 })
 
-app.get('/savepreference/:type/:id', (res, req)=> {
-    console.log(localStorage.getItem('username'))
+app.post('/savepreference/:type/:restid/:userid', (req, res)=> {
+    console.log("Save Preferences", req.params.type)
+    dbfunctions.savePreference(db, req.params.type, req.params.restid, req.params.userid)
+    res.redirect('/')
 })
 
 app.get('/me/:username', (req, res)=> {
@@ -91,6 +93,11 @@ app.get('/fetchrestaurants/:ff', (req, res)=> {
         console.log(result)
         res.send(result)
     })
+})
+
+// Checks to see if a specific restaurant has been 
+app.get('/loadsaved/:id', (req, res)=> {
+
 })
 
 app.delete('/logout', (req, res) => {

@@ -28,19 +28,20 @@ const loadUser = (db, username, callback) => {
     .catch((err) => console.log("Error finding that user...", err));
 };
 
-const savePreference = (db, foodType, restaurantId) => {
-    console.log("Saving Preference")
-    // db.none(`INSERT INTO user_preferences (UserId, Food_Category, Restaurant_Id) VALUES ('${foodType}', '${restaurantId}'`)
-    // .then((log)=>{
-    //     console.log("Successfully created and instantiated user into the DB! "+log)
-    //     callback()
-    // })
+const savePreference = (db, foodType, restaurantId, userId) => {
+    console.log("Saving Preferences Now", foodType, restaurantId, userId)
+    db.none(`INSERT INTO user_preferences (userid, food_category, restaurant_id) VALUES ('${userId}', '${foodType}', '${restaurantId}')`)
+    .then((log)=>{
+        console.log("Successfully added a user preference "+log)
+        
+        //callback()
+    })
 }
 
 const attemptLogin = async (db, username, password, callback) => {
   console.log("To Lowercase " + username.toLowerCase(), password);
   db.one(`SELECT * FROM users WHERE username = '${username.toLowerCase()}'`)
-    .then((user) => {
+    .then((user) => { 
       console.log(user.favorite_foods);
       // compares the users entered password to the password to the user in the database if a user with that username exists
       bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -65,4 +66,5 @@ module.exports = {
   uploadNewUser,
   loadUser,
   attemptLogin,
+  savePreference,
 };

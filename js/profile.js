@@ -1,9 +1,13 @@
 // When a business is selected, the object is appended into here
-console.log("I am Alive")
+
+var selectedBusiness = []
+var userObj = []
 
 const start = (user) => {
   console.log(user);
-
+  userObj = []
+  userObj.push(user)
+  console.log("USERSWER ", userObj[0])
   const writeReview = document.querySelector(".submitbutton");
   const uploadPicture = document.querySelector(".submitpicture");
 
@@ -54,7 +58,6 @@ fetch(`/fetchrestaurants/${localPizza}`)
 
 const setupView = (results) => {
 
-  
   // Do this automatically in the future
   console.log("SEtup View")
   let business1 = results.businesses[0]
@@ -95,19 +98,20 @@ const setupView = (results) => {
 }
 
 var bookmarkbtn = document.querySelector('#bookmarkbtn')
+var bookmarkbtnform = document.querySelector('#bookmarkbtnform')
+
 bookmarkbtn.onclick = function() {
-  //selectedBusiness[0]
-  console.log("pressed")
-  bookmarkbtn.setAttribute('method', 'post');
-  bookmarkbtn.setAttribute('action', `/savepreference/${selectedBusiness.categories[0].alias}/${selectedBusiness.id}`);
-  bookmarkbtn.style.display = 'hidden';
-  bookmarkbtn.submit()
+  bookmarkbtnform.method = "POST"
+  bookmarkbtnform.action = `/savepreference/${selectedBusiness[0].categories[0].alias}/${selectedBusiness[0].id}/${userObj[0].id}?_method=POST`
+
 }
 
 function clickedOnRestaurant(id, results) {
 
   let business = results.businesses[id]
-  //selectedBusiness[0] = business
+  selectedBusiness = []
+  selectedBusiness.push(business)
+  console.log("Selected Business", selectedBusiness[0])
 
   var viewOnYelpBtn = document.querySelector('#yelpviewbtn')
   viewOnYelpBtn.href = `${business.url}`
