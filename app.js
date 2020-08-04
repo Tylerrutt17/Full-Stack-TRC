@@ -77,9 +77,7 @@ app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
 app.post('/savepreference/:type/:restid/:userid', (req, res)=> {
     console.log("Save Preferences", req.params.type)
     dbfunctions.savePreference(db, req.params.type, req.params.restid, req.params.userid)
-    
     res.redirect('/')
-
 })
 
 app.get('/me/:username', (req, res)=> {
@@ -92,18 +90,15 @@ app.get('/me/:username', (req, res)=> {
 app.get('/fetchrestaurants/:ff', (req, res)=> {
     // ff is the favorite_food
     calls.fetchBusinesses(result=> {
-        //console.log(result)
+        console.log(result)
         res.send(result)
     })
 })
 
-// // Checks to see if a specific restaurant has been saved by the user
-// app.get('/loadsaved/:id', (req, res)=> {
-//     dbfunctions.checkPreferenceState(db, req.params.id, (status)=> {
-//         console.log("STATSUDF ", status)
-//         res.send(status)
-//     })
-// })
+// Checks to see
+app.get('/loadsaved/:id', (req, res)=> {
+
+})
 
 app.delete('/logout', (req, res) => {
     console.log('Logged Out')
@@ -119,18 +114,4 @@ app.listen(port, ()=>{
     console.log(`listening on http://localhost:${port}`)
 })
 
-  app.delete("/logout", (req, res) => {
-    console.log("Logged Out");
-    res.redirect("/login");
-  });
-
-  function checkAuthenticated(req, res, next) {
-    next();
-  };
-
-  const port = 5000;
-  app.listen(port, () => {
-    console.log(`listening on http://localhost:${port}`);
-  });
-});
-// module.exports = user
+//module.exports = user

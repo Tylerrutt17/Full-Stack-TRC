@@ -112,14 +112,13 @@ const setupBookmark = (status) => {
 
 function clickedOnRestaurant(id, results) {
 
-
   let business = results.businesses[id]
   selectedBusiness = []
   selectedBusiness.push(business)
   console.log("Selected Business", selectedBusiness[0])
 
-  var viewOnYelpBtn = document.querySelector('#yelpviewbtn')
-  viewOnYelpBtn.href = `${business.url}`
+  // var viewOnYelpBtn = document.querySelector('#yelpviewbtn')
+  // viewOnYelpBtn.href = `${business.url}`
 
   var title = document.querySelector('#restaurantname')
   var type = document.querySelector('#restauranttype')
