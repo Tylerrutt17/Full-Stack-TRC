@@ -33,11 +33,40 @@ const start = (user) => {
 
   let userwelcomeLbl = document.querySelector('.userwelcome')
   userwelcomeLbl.innerText = `Let's Eat, ${user.name}`
+
+  
 }
 
 fetch(`/me/${localStorage.getItem('username')}`)
 .then(data=>data.json())
 .then(user=>start(user))
+
+fetch(`/fetchrestaurants/${localStorage.getItem('favorite_foods')}`)
+.then(data=>data.json())
+.then(results=>loadRestaurants(results))
+
+const loadRestaurants = (results) => {
+  console.log('Yay Got all of', results)
+}
+
+// const getRestaurants = () => {
+//   console.log("Running this func")
+//   let topThree = []
+//     var counter = 0
+//     for (counter; counter < 3; counter++) {
+//       var topRandom = calls.choices[Math.floor(Math.random() * Math.floor(calls.choices.length))]
+//       topThree.push(topRandom)
+//     } 
+//     console.log('Get Restaurants', topThree)
+// }
+
+
+ //getRestaurants()
+
+
+
+
+
 
 //start()
 

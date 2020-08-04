@@ -10,6 +10,7 @@ const methodOverride = require('method-override')
 var path = require('path');
 var bodyParser = require('body-parser') 
 var dbfunctions = require('./dbFunctions/dbfunctions.js')
+const https = require("follow-redirects").https;
 
 app.use(flash())
 app.use(express.static("dbFunctions"));
@@ -72,12 +73,19 @@ app.post('/registernewuser', addUser, async (req, res) => {
 app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
     console.log(res.user)
     res.send(res.user)
-
 })
 
 app.get('/me/:username', (req, res)=> {
+    //calls.
     dbfunctions.loadUser(db, req.params.username, (user)=> {
         res.send(user)
+    })
+})
+
+app.get('/fetchrestaurants/:ff', (req, res)=> {
+    console.log("FF", req.params.ff)
+    calls.fetchBusinesses(req.params.ff, result=> {
+        res.send(result)
     })
 })
 
