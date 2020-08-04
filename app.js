@@ -69,7 +69,6 @@ app.post('/registernewuser', addUser, async (req, res) => {
     res.redirect('/login')
 })
 
-
 app.post('/attemptlogin', attemptLogin, setUser, (req, res) => {
     console.log(res.user)
     res.send(res.user)
@@ -83,7 +82,7 @@ app.get('/me/:username', (req, res)=> {
 })
 
 app.get('/fetchrestaurants/:ff', (req, res)=> {
-    console.log("FF", req.params.ff)
+    // ff is the favorite_food
     calls.fetchBusinesses(req.params.ff, result=> {
         res.send(result)
     })
