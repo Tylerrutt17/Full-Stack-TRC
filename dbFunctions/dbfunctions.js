@@ -1,16 +1,7 @@
 const bcrypt = require("bcrypt");
 const pgp = require("pg-promise")();
 
-const uploadNewUser = async (
-  db,
-  name,
-  email,
-  username,
-  favorite_foods,
-  zipcode,
-  rawpassword,
-  callback
-) => {
+const uploadNewUser = async (db,name,email,username,favorite_foods,zipcode,rawpassword,callback) => {
   // Hashes the raw password using bcrypt.
   const hashedPassword = await bcrypt.hash(rawpassword, 10);
 
@@ -23,9 +14,7 @@ const uploadNewUser = async (
     );
     callback();
   });
-
 };
-
 
 // Based on a users username you can load that specific users information
 const loadUser = (db, username, callback) => {
@@ -40,7 +29,7 @@ const loadUser = (db, username, callback) => {
 };
 
 const savePreference = (db, foodType, restaurantId) => {
-    console.log("Loading User NOw!!")
+    console.log("Saving Preference")
     // db.none(`INSERT INTO user_preferences (UserId, Food_Category, Restaurant_Id) VALUES ('${foodType}', '${restaurantId}'`)
     // .then((log)=>{
     //     console.log("Successfully created and instantiated user into the DB! "+log)
