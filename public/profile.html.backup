@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    <title>Document</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -26,7 +26,7 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/styles/css/profile.css" />
+    <link rel="stylesheet" href="profile.css" />
   </head>
   <body>
     <div class="row main">
@@ -38,9 +38,9 @@
           </div>
         </div>
         <div class="personal">
-          <h1 class="username" id="username">Username</h1>
+          <h1>Christian Alston</h1>
           <i class="fas fa-map-marker-alt"></i>
-          <h3 class="location">Zipcode</h3>
+          <h3>Located in Atlanta</h3>
           <ul>
             <a href=""><li>Reviews</li></a>
             <a href=""><li>Favorite Places To Eat</li></a>
@@ -59,36 +59,31 @@
               <a href=""><li>View</li></a>
               <a href=""><li>Lorem</li></a>
             </ul>
-            <div>
-              <form action="/logout?_method=DELETE" method="POST">
-                <button class="login" type="submit">Logout</button>
-              </form>
-            </div>
-            <!-- <button class="logout">Logout</button> -->
+            <button class="logout">Logout</button>
           </div>
         </div>
         <div class="row intro">
-          <h1 class="userwelcome">Let's Eat, name.</h1>
+          <h1>Let's Eat, Christian.</h1>
         </div>
         <div
           class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-3 eats"
         >
-          <div class="col place" id="rest1">
-            <h2 id="rest1title">Sample 1</h2>
-            <img id="rest1img" src="/styles/images/friedrice.jpg" alt="" />
-            <h3 id="rest1price">Price Range: <span>$</span></h3>
+          <div class="col place">
+            <h2>Sample 1</h2>
+            <img src="friedrice.jpg" alt="" />
+            <h3>Price Range: <span>$</span></h3>
             <p>Leave a review?</p>
           </div>
-          <div class="col place" id="rest2">
-            <h2 id="rest2title">Sample 2</h2>
-            <img id="rest2img" src="/styles/images/burger.jpg" alt="" />
-            <h3 id="rest2price">Price Range: <span>$$</span></h3>
+          <div class="col place">
+            <h2>Sample 2</h2>
+            <img src="burger.jpg" alt="" />
+            <h3>Price Range: <span>$$</span></h3>
             <p>Leave a review?</p>
           </div>
-          <div class="col place" id="rest3">
-            <h2 id="rest3title">Sample 3</h2>
-            <img id="rest3img" src="/styles/images/eggs.jpg" alt="" />
-            <h3 id="rest3price">Price Range: <span>$$$</span></h3>
+          <div class="col place">
+            <h2>Sample 3</h2>
+            <img src="eggs.jpg" alt="" />
+            <h3>Price Range: <span>$$$</span></h3>
             <p>Leave a review?</p>
           </div>
         </div>
@@ -109,7 +104,7 @@
                 name="searchbar2"
                 id="searchbar2"
               />
-              <button type="submit" class="submitsearch">
+              <button id="search" type="submit" class="submitsearch">
                 <i class="fas fa-search"></i>
               </button>
             </form>
@@ -150,23 +145,20 @@
             </h2>
           </div>
           <div class="stats">
-            <h1 id="restaurantname">Restaurant Name</h1>
-            <p id="restaurantprice">$$$</p>
-            <h3 id="restauranttype">Type of restaurant</h3>
-            <h2 id="restauranthours">Hours and Locations</h2>
+            <h1>Restaurant Name</h1>
+            <p>$$$</p>
+            <h3>Type of restaurant</h3>
+            <h2>Hours and Locations</h2>
             <ul>
               <li>
-                <button class="submitbutton">
+                <button type="submit" class="submitbutton">
                   <i class="fas fa-check"></i>
                 </button>
               </li>
               <li>
-                  <form id="bookmarkbtnform" action="/" method="GET">
-                    <button type="submit" id="bookmarkbtn">
-                        <i class="far fa-bookmark"></i> Save
-                      </button>
-                </form>
-                
+                <button type="submit">
+                  <i class="far fa-bookmark"></i>
+                </button>
               </li>
               <li>
                 <button type="submit" class="submitpicture">
@@ -216,7 +208,7 @@
             </div>
             <div class="bottom">
               <ul>
-                <a id="yelpviewbtn" href="" target="_blank"
+                <a href=""
                   ><li>
                     <i class="fas fa-external-link-alt"></i> View on Yelp
                   </li></a
@@ -238,6 +230,27 @@
         </div>
       </div>
     </div>
-    <!-- <script type="text/javascript" src="/profile.js"></script> -->
   </body>
+  <script src="profile.js"></script>
+  <script>
+    // Initialize and add the map
+    function initMap() {
+      // The location of uluru
+      var uluru = { lat: 32.1656, lng: 82.9001 };
+      // The map, centered at uluru
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: uluru,
+      });
+      // The marker, positioned at uluru
+      var marker = new google.maps.Marker({ position: uluru, map: map });
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+      });
+    }
+  </script>
+  <script
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7o99LcSnY93zc2g7r28JLZCv6BoIFOwk&callback=initMap"
+  ></script>
 </html>

@@ -17,12 +17,12 @@
 ## Run using link - not done yet.
 
 ## USED Technologies/API's
-*
+* Yelp's Food And Review Api
+* Elephant SQL Database
 
 ## OVERVIEW
-* Upon opening of the page, user can login to the website or register a new account
-* User can login with a created account to access their profile page.
-* Logout button is available inside
-# -Main page-
-* 
+* Users can register new Accounts // Users information is saved via DB
+* Upon entering the Home Page, users can view their users information, as well as see 3 restaurants recommended to them.
+* Users can click on one of the recommended restaurants to bring them to a full view of that specific restaurant. (Location, Price, Ect.)
+* Users can save restaurants that they like.
 

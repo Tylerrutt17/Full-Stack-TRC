@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
-    font-family: 'Work Sans';
+    font-family: "Work Sans";
 }
 
 input:focus {
@@ -13,13 +13,14 @@ button:focus {
     outline: none;
 }
 
-
 .mainpage {
     /* background-image: url(drinks.jpg);
     /* background-size: cover; 
     background-color: rgb(255, 187, 0); */
     background: rgb(212, 180, 0);
-    background: linear-gradient(180deg, rgba(212, 180, 0, 1) 7%, rgba(244, 221, 6, 1) 47%);
+    background: linear-gradient(180deg,
+            rgba(212, 180, 0, 1) 7%,
+            rgba(244, 221, 6, 1) 47%);
     height: 100vh;
     width: 100%;
     z-index: 7;
@@ -30,9 +31,8 @@ button:focus {
 
 .mainpage>.login {
     height: 70%;
-    width: 50%;
     background-color: rgb(255, 255, 255);
-    position: absolute;
+    position: relative;
     top: 25%;
     text-align: center;
     overflow: hidden;
@@ -50,7 +50,7 @@ button:focus {
     background-color: rgb(255, 187, 0);
     position: absolute;
     left: 10%;
-    top: 18%;
+    top: 100px;
 }
 
 .login>ul {
@@ -60,7 +60,6 @@ button:focus {
     left: 38%;
     top: 25%;
 }
-
 
 ul>a {
     color: black;
@@ -77,11 +76,9 @@ ul>a {
 }
 
 .login>form>input {
-    height: 50px;
     width: 80%;
     margin: 20px 0;
-    padding-left: 25px;
-    font-size: 25px;
+    padding-left: 20px;
     border-radius: 50px;
     border: grey 1px solid;
 }
@@ -101,11 +98,9 @@ label {
     position: absolute;
     bottom: 10%;
     left: 15%;
-    height: 50px;
     width: 70%;
     border: none;
     font-weight: bold;
-    font-size: 20px;
     border-radius: 50px;
 }
 
@@ -116,11 +111,9 @@ label {
     border: none;
     color: black;
     border-radius: 50px;
-    height: 50px;
     width: 70%;
     left: 15%;
     font-weight: bold;
-    font-size: 20px;
 }
 
 .signup>a {
@@ -131,4 +124,151 @@ label {
 .login>a {
     position: absolute;
     bottom: 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .login {
+        width: 100%;
+        background-color: black;
+    }
+
+    .login>h1 {
+        font-size: 24px;
+        top: 20%;
+    }
+
+    .yellowline {
+        top: 5px;
+    }
+
+    .login>ul {
+        transform: translate(-30%, -40%);
+    }
+
+    form>input {
+        height: 30px;
+        font-size: 15px;
+    }
+
+    button {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        transform: translate(-50%);
+        padding-bottom: 5px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .login {
+        width: 70%;
+    }
+
+    .login>h1 {
+        font-size: 30px;
+        top: 20%;
+    }
+
+    .yellowline {
+        top: 5px;
+    }
+
+    .login>ul {
+        transform: translate(-10%);
+    }
+
+    form>input {
+        height: 35px;
+        font-size: 15px;
+    }
+
+    button {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        transform: translate(-50%);
+        padding-bottom: 5px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .login {
+        width: 70%;
+        background-color: rgb(103, 105, 103);
+    }
+
+    .login>h1 {
+        font-size: 41px;
+        top: 20%;
+    }
+
+    .yellowline {
+        height: 2px;
+    }
+
+    .login>ul {
+        transform: translate(-5%);
+    }
+
+    form>input {
+        height: 35px;
+        font-size: 15px;
+    }
+
+    button {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        transform: translate(-50%);
+        padding-bottom: 5px;
+    }
+}
+
+@media screen and (min-width: 1324px) {
+    .login {
+        width: 70%;
+        background-color: rgb(103, 105, 103);
+    }
+
+    .login>h1 {
+        font-size: 41px;
+        top: 20%;
+    }
+
+    .yellowline {
+        top: 20px;
+    }
+
+    .login>ul {
+        transform: translate(-5%);
+    }
+
+    form>input {
+        height: 35px;
+        font-size: 15px;
+    }
+
+    button {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        transform: translate(-50%);
+        padding-bottom: 5px;
+    }
 }

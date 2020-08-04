@@ -193,12 +193,11 @@ textarea:focus {
   text-transform: uppercase;
 }
 
-.login {
+.navitems>.logout {
   background-color: white;
   border: black 2px solid;
   font-weight: bold;
   margin: auto 0;
-  padding: 5px;
   text-transform: uppercase;
 }
 
@@ -291,7 +290,7 @@ textarea:focus {
 }
 
 .intro>h1 {
-  font-size: min(max(16px, 5vw), 80px);
+  font-size: min(max(16px, 7vw), 100px);
   font-family: "Merriweather";
   text-align: center;
   margin: auto 30px;
@@ -816,7 +815,7 @@ textarea:focus {
   }
 }
 
-@media screen and (min-width: 1024px) and (max-width:1440px) {
+@media screen and (min-width: 1024px) and (max-width:2000px) {
   .right>i {
     position: absolute;
     bottom: 10px;

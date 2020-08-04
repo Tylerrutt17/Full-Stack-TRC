@@ -119,4 +119,18 @@ app.listen(port, ()=>{
     console.log(`listening on http://localhost:${port}`)
 })
 
-//module.exports = user
+  app.delete("/logout", (req, res) => {
+    console.log("Logged Out");
+    res.redirect("/login");
+  });
+
+  function checkAuthenticated(req, res, next) {
+    next();
+  };
+
+  const port = 5000;
+  app.listen(port, () => {
+    console.log(`listening on http://localhost:${port}`);
+  });
+});
+// module.exports = user
