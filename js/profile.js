@@ -106,6 +106,10 @@ bookmarkbtn.onclick = function() {
 
 }
 
+const setupBookmark = (status) => {
+    console.log("Status", status)
+}
+
 function clickedOnRestaurant(id, results) {
 
   let business = results.businesses[id]
@@ -113,8 +117,8 @@ function clickedOnRestaurant(id, results) {
   selectedBusiness.push(business)
   console.log("Selected Business", selectedBusiness[0])
 
-  var viewOnYelpBtn = document.querySelector('#yelpviewbtn')
-  viewOnYelpBtn.href = `${business.url}`
+  // var viewOnYelpBtn = document.querySelector('#yelpviewbtn')
+  // viewOnYelpBtn.href = `${business.url}`
 
   var title = document.querySelector('#restaurantname')
   var type = document.querySelector('#restauranttype')
@@ -127,8 +131,8 @@ function clickedOnRestaurant(id, results) {
   price.innerText = `price: ${business.price}`
 
   title.scrollIntoView()
-}
 
+}
 
 function GetElementInsideContainer(containerID, childID) {
   var elm = {};
