@@ -27,7 +27,7 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",
     "flash": "^1.1.0",
-    "follow-redirects": "^1.12.1",
+    "follow-redirects": "^1.14.7",
     "method-override": "^3.0.0",
     "node": "^14.5.0",
     "node-fetch": "^2.6.0",
